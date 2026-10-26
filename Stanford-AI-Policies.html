@@ -359,6 +359,63 @@ body:not(.at-root) #qrCard, body.follow #qrCard{opacity:0;pointer-events:none}
 #qrDlg .qr{width:min(400px,58vh);margin:0 auto}
 .qrurl{font-size:14px;text-align:center;word-break:break-all;margin:12px 0 4px}
 
+/* ---------- presenter tour (?tour) ---------- */
+#tourCard{position:fixed;top:52px;left:0;right:0;bottom:0;z-index:12;display:none;align-items:center;justify-content:center;padding:28px 24px 88px;background:var(--page-base);background-image:var(--page);overflow:auto;transition:right .3s ease}
+body.tally-open #tourCard{right:400px}
+body.tour-card #tourCard{display:flex}
+#tourCard .tc{background:var(--surface);color:var(--ink);border-radius:14px;box-shadow:var(--shadow);padding:40px 48px 36px;width:100%;max-width:1040px;margin:auto}
+.tc-dim{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:.02em}
+.tc-dim .ic{width:1.25em;height:1.25em}
+.tc-dim.big{font-size:26px}
+.tc-q{font-family:var(--serif);font-weight:600;font-size:clamp(34px,4.4vw,58px);line-height:1.08;margin:8px 0 12px}
+.tc-gov{font-size:21px;line-height:1.45;color:var(--muted);margin:0 0 6px}
+.tc-counts{font-size:19px;line-height:1.45;color:var(--muted);margin:0 0 24px}
+.tc-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tc-list button{width:100%;display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:2px;align-items:center;text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font:inherit;color:inherit;cursor:pointer}
+.tc-list button:hover{border-color:var(--stone)}
+.tc-list button:focus-visible{outline:3px solid var(--lagunita);outline-offset:2px}
+.tc-list .pill{grid-row:1 / span 2;font-size:20px;padding:6px 8px}
+.tc-t{font-size:24px;font-weight:600;line-height:1.25}
+.tc-l{grid-column:2;font-size:17px;color:var(--muted)}
+.tc-scroll{overflow-x:auto}
+.tc-map{width:100%;border-collapse:collapse;margin-top:20px;font-size:20px}
+.tc-map th,.tc-map td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
+.tc-map thead th{font-size:16px;font-weight:600;color:var(--muted);vertical-align:bottom;text-align:center}
+.tc-map thead th .ic{width:1.6em;height:1.6em}
+.tc-map thead th span{display:block;margin-top:6px}
+.tc-map td{font-family:var(--serif);font-size:48px;font-weight:600;text-align:center;width:17%;font-variant-numeric:tabular-nums}
+.tc-sub{display:block;font-weight:400;color:var(--muted);font-size:18px;margin-top:4px}
+.tc-note{color:var(--muted);font-size:17px;margin:16px 0 0}
+#tourPos{font-size:14px;font-weight:600;color:var(--muted);align-self:center;padding:0 4px 0 8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:700px){ #tourCard{padding:16px 12px 96px} #tourCard .tc{padding:22px 16px} .tc-t{font-size:19px} .tc-gov,.tc-counts{font-size:17px}
+  .tc-map{font-size:16px} .tc-map th,.tc-map td{padding:10px 4px} .tc-map thead th{font-size:12px} .tc-map td{font-size:28px} .tc-sub{font-size:14px} .tc-dim{font-size:17px} #tourPos{font-size:12px;padding:0 2px} }
+@media (prefers-reduced-motion: reduce){ #tourCard{transition:none} }
+body.tour-card #tourCard{padding-top:16px}
+#tourCard .tc.wide{max-width:1200px;padding:22px 34px 20px}
+#tourCard .tc.wide .tc-dim.big{font-size:20px}
+#tourCard .tc.wide .tc-q{font-size:clamp(28px,3.2vw,40px);margin:2px 0 4px}
+#tourCard .tc.wide .tc-gov{font-size:18px;margin:0}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.tier{border:1px solid var(--line);border-top:5px solid var(--tc);border-radius:10px;padding:10px 14px 8px;background:var(--surface)}
+.tier.low{--tc:var(--palo)} .tier.mod{--tc:var(--poppy)} .tier.high{--tc:var(--cardinal)}
+.tier h3{margin:0 0 4px;text-align:center;font-size:21px;font-weight:700;color:var(--tc)}
+.tier ul{margin:0;padding-left:18px;font-size:15px;line-height:1.27}
+.tier li{margin:2px 0}
+.tc-alert{margin:12px 0 0;padding:8px 14px;border-left:5px solid var(--cardinal);border-radius:8px;background:var(--cardinal-bg);font-size:16px;line-height:1.4}
+.tc-alert .tc-srci{color:var(--muted);font-size:14px;white-space:nowrap}
+.tc-src{font-size:15px;color:var(--muted);margin:10px 0 0}
+.tc-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:19px;line-height:1.35}
+.tc-table th,.tc-table td{padding:12px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tc-table thead th{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;vertical-align:bottom}
+.tc-table tbody th{font-size:21px;white-space:nowrap}
+.tc-table .c{text-align:center}
+.tc-table .yes{color:var(--palo);font-weight:700;font-size:26px;line-height:1}
+.tc-table .no{color:var(--cardinal);font-weight:700}
+.tc-table small{display:block;font-size:14px;line-height:1.3;color:var(--muted);font-weight:400;margin-top:3px}
+.tc-points{margin:14px 0 0;padding-left:22px;font-size:18px;line-height:1.45}
+.tc-points li{margin:4px 0}
+@media (max-width:900px){ .tiers{grid-template-columns:1fr} .tc-table{font-size:15px} .tc-table tbody th{font-size:16px;white-space:normal} .tc-points{font-size:15px} }
+
 /* ---------- printable list (fallback when the PDF library can't load) ---------- */
 #printSheet{display:none}
 @media print{
@@ -427,8 +484,8 @@ table.ov td.n{font-weight:700;text-align:center;font-variant-numeric:tabular-num
   <div class="top-m"><img class="top-logo c" id="topLogoC" alt="Stanford Medicine"><img class="top-logo w" id="topLogoW" alt=""></div>
   <div class="top-r">
     <button class="tbtn" id="qrBtn" title="Follow-along QR code (Q)">QR</button>
-    <button class="tbtn" id="mapBtn" title="Lens × Dimension table (M)">Map</button>
-    <button class="tbtn" id="ovBtn" title="Where lenses share tools and policies (O)">Overlap</button>
+    <button class="tbtn" id="mapBtn" title="Role × Dimension table (M)">Map</button>
+    <button class="tbtn" id="ovBtn" title="Where roles share tools and policies (O)">Overlap</button>
     <button class="tbtn" id="legendBtn">Key</button>
     <button class="tbtn" id="tallyBtn" title="Running tally (T)">Tally</button>
   </div>
@@ -476,12 +533,12 @@ table.ov td.n{font-weight:700;text-align:center;font-variant-numeric:tabular-num
 </aside>
 
 <dialog id="mapDlg">
-  <div class="dlg-h"><h2>Lens × Dimension map</h2><button class="tbtn" data-close>Close</button></div>
+  <div class="dlg-h"><h2>Role × Dimension map</h2><button class="tbtn" data-close>Close</button></div>
   <div class="dlg-b" id="mapBody"></div>
 </dialog>
 
 <dialog id="ovDlg">
-  <div class="dlg-h"><h2>Where lenses overlap</h2><button class="tbtn" data-close>Close</button></div>
+  <div class="dlg-h"><h2>Where roles overlap</h2><button class="tbtn" data-close>Close</button></div>
   <div class="dlg-b">
     <div class="ovtabs"><button class="tbtn on" data-ov="pols">Policies</button><button class="tbtn" data-ov="tools">Tools</button></div>
     <div id="ovBody"></div>
@@ -593,8 +650,8 @@ const POL = {
  "sgim":{n:"SGIM position statement on generative AI (J Gen Intern Med 2025)",o:"Society of General Internal Medicine (Stanford co-authors)",u:"https://doi.org/10.1007/s11606-024-09102-0",k:"guid",sa:true}};
 /* u: the primary source behind each tool's status line, where one is public (used in My list and the PDF) */
 const TOOL = {
- "chatgpt":{n:"ChatGPT Edu",d:"All risk tiers including PHI, in the UIT-managed workspace; affiliates included",u:"https://uit.stanford.edu/service/openai-chatgpt-edu"},
- "gemini":{n:"Gemini Enterprise",d:"All risk tiers including PHI (UIT-managed); affiliates included",u:"https://uit.stanford.edu/service/gemini-enterprise-ai"},
+ "chatgpt":{n:"ChatGPT Edu",d:"All risk tiers including PHI, in the UIT-managed workspace; affiliates can buy access",u:"https://uit.stanford.edu/service/openai-chatgpt-edu"},
+ "gemini":{n:"Gemini Enterprise",d:"All risk tiers including PHI (UIT-managed); affiliates can buy access",u:"https://uit.stanford.edu/service/gemini-enterprise-ai"},
  "claude":{n:"Claude for Education",d:"All tiers except PHI; PHI only via the AI API Gateway",u:"https://uit.stanford.edu/service/claude"},
  "playground":{n:"AI Playground",d:"High-Risk data, no PHI",u:"https://uit.stanford.edu/service/aiplayground"},
  "securegpt":{n:"Secure GPT",d:"PHI (SHC/SoM)",u:POL["uit-services"].u},
@@ -686,7 +743,7 @@ const LENSES = [
        pol:["hipaa","cmia","uit-tiers"], own:["UIT Information Security Office","SHC Privacy & Compliance","HHS OCR (enforcement)"], status:"clear"},
       {id:"C2", t:"PHI in ChatGPT Edu: approved, but only in the UIT-managed workspace",
        ex:"A clinician summarizes a discharge in ChatGPT, signed in with a stanford.edu address but in a workspace UIT did not provision.",
-       ev:"UIT manages ChatGPT Edu and Gemini Enterprise and approves both for every risk tier, PHI included; affiliates get a Standard tier. The approval covers only the UIT-managed workspace (released June 30, 2026), reached through Stanford single sign-on. A stanford.edu address can belong to other ChatGPT workspaces, which are not approved for Stanford data. An April 2025 page calling Secure GPT the only PHI-approved LLM predates these approvals.",
+       ev:"UIT manages ChatGPT Edu and Gemini Enterprise and approves both for every risk tier, PHI included; affiliates can buy a Standard tier. The approval covers only the UIT-managed workspace (released June 30, 2026), reached through Stanford single sign-on. A stanford.edu address can belong to other ChatGPT workspaces, which are not approved for Stanford data. An April 2025 page calling Secure GPT the only PHI-approved LLM predates these approvals.",
        evb:"req", cites:[],
        bear:{others:"The patient", inst:"PHI outside Stanford’s agreement", self:"PHI in an unapproved workspace"},
        when:"immediate", whenNote:"The disclosure happens when you paste.",
@@ -1134,6 +1191,8 @@ const reveal = {}, seenCards = [];
 let current = null, view = "cards", showAll = false, si = 0;
 /* ?follow (the QR code's link) opens an attendee view: Tally open with every card listed, ready to pick from. */
 const FOLLOW = new URLSearchParams(location.search).has("follow");
+/* ?tour: presenter route (see TOUR below). */
+let TOUR = null, ti = 0, tourCardOn = false, tourCardIt = null;
 const stage = document.getElementById("stage"), world = document.getElementById("world");
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const uniq = a => [...new Set(a)];
@@ -1286,7 +1345,7 @@ const FACES = ["title"].concat(LENSES.map(L=>L.id));
 const FACE_ORI = [{rx:0,ry:0},{rx:0,ry:-90},{rx:0,ry:-180},{rx:0,ry:-270},{rx:-90,ry:0},{rx:90,ry:0}];
 const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let ori = {rx:0, ry:0}, front = 0, cs = 420, spinPaused = reduced, hovering = false, lastTouch = Date.now();
-const cubeTransform = () => `translateZ(${-cs/2}px) rotateX(${hovering||reduced?0:-11}deg) rotateY(${hovering||reduced?0:16}deg) rotateX(${ori.rx}deg) rotateY(${ori.ry}deg)`;
+const cubeTransform = () => `translateZ(${-cs/2}px) rotateX(${reduced?0:-11}deg) rotateY(${reduced?0:16}deg) rotateX(${ori.rx}deg) rotateY(${ori.ry}deg)`;
 const near = (base, cur) => base + 360*Math.round((cur-base)/360);
 function showFace(i, instant){
   const o = FACE_ORI[i];
@@ -1306,7 +1365,7 @@ function sizeCube(){
 }
 setInterval(()=>{
   // Idle auto-spin runs only on the opening cube and at the end, never at a between-roles stop.
-  if(document.body.classList.contains("at-root") && !(stops[si] && stops[si].between) && !spinPaused && !hovering && !document.querySelector("dialog[open]") && Date.now()-lastTouch > 5000){ showFace((front+1)%6); lastTouch = Date.now() - 2000; }
+  if(document.body.classList.contains("at-root") && !(stops[si] && stops[si].between) && !spinPaused && !hovering && !tourCardOn && !document.querySelector("dialog[open]") && Date.now()-lastTouch > 5000){ showFace((front+1)%6); lastTouch = Date.now() - 2000; }
 }, 1000);
 const lensOf = f => ancestors(f).find(a=>a.type==="lens");
 function smallCam(L){
@@ -1400,10 +1459,12 @@ function navigate(id){
   else { const i = stopFor(id); if(i>=0) go(i); }
 }
 function next(){
+  if(TOUR) return tourNext();
   if(current && current.type==="chain"){ const id = current.id, s = stepNow[id]||1; if(s<5){ setStep(id, s+1); updateHud(); } else navigate(current.parent.id); return; }
   go(si+1);
 }
 function prev(){
+  if(TOUR) return tourPrev();
   if(current && current.type==="chain"){ const id = current.id, s = stepNow[id]||1; if(s>1){ setStep(id, s-1); updateHud(); } else navigate(current.parent.id); return; }
   go(si-1);
 }
@@ -1432,6 +1493,7 @@ function updateHud(){
   document.getElementById("prevBtn").disabled = si===0 && !inCase;
   document.getElementById("outBtn").disabled = !current.parent;
   document.getElementById("nextBtn").textContent = inCase ? ((stepNow[current.id]||1)<5 ? "Next step ›" : "Back to card ›") : (si===stops.length-1 ? "Done" : (si===0 ? "Start ›" : "Next ›"));
+  if(TOUR) tourHud();
 }
 
 /* ================= TALLY ================= */
@@ -1614,7 +1676,7 @@ function printList(){
 
 /* ================= MAP & OVERLAP ================= */
 function buildMap(){
-  let h = `<table class="map"><thead><tr><th>Lens</th><th>Dimension</th><th>Question it answers</th><th>Policies and guidance (author)</th><th>Tools available</th><th>Cases &amp; examples</th></tr></thead><tbody>`;
+  let h = `<table class="map"><thead><tr><th>Role</th><th>Dimension</th><th>Question it answers</th><th>Policies and guidance (author)</th><th>Tools available</th><th>Cases &amp; examples</th></tr></thead><tbody>`;
   LENSES.forEach(L=>DIMS.forEach((d,j)=>{ const C=L.dims[d.k];
     h += `<tr class="rowlink" data-go="${C.id}">${j===0?`<td class="lens" rowspan="3">${esc(L.name)}</td>`:""}<td style="color:${d.color};font-weight:700">${d.name}</td><td>${esc(C.q)}</td>
       <td><ul>${C.allPols.map(p=>`<li>${plink(p)} <span style="color:var(--muted)">(${esc(POL[p].o)})</span></li>`).join("")}</ul></td>
@@ -1639,21 +1701,23 @@ function buildOverlap(){
 }
 
 /* ================= EVENTS ================= */
-/* Chrome drops clicks on cube faces turned 90° once the hover flattens the cube, so a click anywhere
-   on the cube opens the face in front rather than trusting 3D hit-testing. */
+/* The cube keeps its tilt under the pointer, so the side faces stay visible and each face opens its own role.
+   A click that lands on no face (the gap at an edge) falls back to the face in front. */
 document.getElementById("scene").addEventListener("click", e=>{
   lastTouch = Date.now();
-  if(e.target.closest("#startBtn")){ go(1); return; }
-  if(front>0) navigate(FACES[front]);
+  if(e.target.closest("#startBtn")){ if(TOUR) tourNext(); else go(1); return; }
+  const f = e.target.closest(".cf"), i = f ? +f.dataset.i : front;
+  if(i>0) navigate(FACES[i]);
 });
 document.getElementById("cube").addEventListener("keydown", e=>{
   const f = e.target.closest(".cf"); if(!f || (e.key!=="Enter" && e.key!==" ")) return;
   e.preventDefault(); e.stopPropagation(); lastTouch = Date.now();
   const i = +f.dataset.i;
-  if(i!==front) showFace(i); else if(i>0) navigate(FACES[i]); else go(1);
+  if(i>0) navigate(FACES[i]); else if(i!==front) showFace(i); else if(TOUR) tourNext(); else go(1);
 });
-document.getElementById("scene").addEventListener("mouseenter", ()=>{ hovering=true; document.getElementById("cube").style.transform = cubeTransform(); });
-document.getElementById("scene").addEventListener("mouseleave", ()=>{ hovering=false; document.getElementById("cube").style.transform = cubeTransform(); });
+/* Hovering only pauses the idle spin, so a face doesn't turn away under the pointer. */
+document.getElementById("scene").addEventListener("mouseenter", ()=>{ hovering=true; });
+document.getElementById("scene").addEventListener("mouseleave", ()=>{ hovering=false; });
 document.getElementById("cubeNav").addEventListener("click", e=>{
   const b = e.target.closest("button"); if(!b) return; lastTouch = Date.now();
   if(b.id==="spinBtn"){ spinPaused = !spinPaused; b.textContent = spinPaused ? "Rotate" : "Pause"; b.setAttribute("aria-pressed", spinPaused); return; }
@@ -1686,7 +1750,7 @@ const qrLink = document.getElementById("qrLink"); qrLink.href = FOLLOW_URL; qrLi
 document.getElementById("qrBtn").onclick = ()=>qrDlg.showModal();
 document.getElementById("copyBtn").onclick = async ()=>{
   const list = showAll ? CARDS : seenCards.map(id=>CARD[id]);
-  const rows = [["Lens","Dimension","Tools","Policies and guidance (author)","No clear policy or owner"]].concat(list.map(C=>[C.lens.name,C.dim.name,C.tools.map(t=>TOOL[t].n).join("; "),C.allPols.map(p=>POL[p].n+" ("+POL[p].o+")").join("; "),C.gaps.map(g=>g.t).join("; ")]));
+  const rows = [["Role","Dimension","Tools","Policies and guidance (author)","No clear policy or owner"]].concat(list.map(C=>[C.lens.name,C.dim.name,C.tools.map(t=>TOOL[t].n).join("; "),C.allPols.map(p=>POL[p].n+" ("+POL[p].o+")").join("; "),C.gaps.map(g=>g.t).join("; ")]));
   const tsv = rows.map(r=>r.join("\t")).join("\n");
   const btn = document.getElementById("copyBtn");
   try{ await navigator.clipboard.writeText(tsv); btn.textContent="Copied"; }
@@ -1726,16 +1790,166 @@ function fitLists(){
   });
 }
 
+/* ================= TOUR ================= */
+/* ?tour opens a presenter route: one stop per item, in the order given, e.g.
+   ?tour=@cube,@in,clin,C2,C9,C7,clin,@cube
+   Items are the cube (@cube), role cards (clin, res, adm, pd, tch), case ids (C2, R4, …) and four slides:
+   @in (Stanford's data risk tiers), @cx (the series' enterprise tools), @out (where output goes) and @map (status by question).
+   ?tour on its own uses TOUR_DEFAULT. Arrows step through each case's five steps, then move on;
+   N and P jump a whole stop. A hash picks the starting stop: #5 (fifth stop) or #R4. */
+const TOUR_DEFAULT = "@cube,@in,@cx,@out,@map,clin,C2,C9,C7,clin,res,R3,R4,R7,res,adm,A1,A8,A5,adm,pd,D1,D3,D9,pd,tch,T2,T3,T5,tch,@cube";
+const TOUR_Q = {in:"What data is this?", cx:"Whose work is it?", out:"Who is accountable for the output?"};
+const TOUR_CARDS = ["@in","@cx","@out","@map"];
+const isRole = s => LENSES.some(L=>L.id===s);
+(function(){
+  const raw = new URLSearchParams(location.search).get("tour");
+  if(raw===null) return;
+  const items = (raw.trim() || TOUR_DEFAULT).split(",").map(s=>s.trim()).filter(Boolean)
+    .map(s => s[0]==="@" ? s.toLowerCase() : (CH[s.toUpperCase()] ? s.toUpperCase() : s.toLowerCase()))
+    .filter(s => s==="@cube" || TOUR_CARDS.includes(s) || CH[s] || isRole(s));
+  if(items.length) TOUR = items;
+})();
+const tourCard = document.createElement("section");
+tourCard.id = "tourCard"; tourCard.setAttribute("aria-live", "polite");
+document.body.appendChild(tourCard);
+const colChains = k => LENSES.flatMap(L => L.dims[k].chains);
+const ST3 = ["clear","partial","gap"];
+const extLink = (u, t) => `<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`;
+const dimHead = k => { const d = DIMS.find(x=>x.k===k); return `<div class="tc-dim big" style="color:${d.color}">${ic(DIMICON[k])}${d.name}</div>`; };
+
+/* UIT risk classification examples, as listed on uit.stanford.edu/guide/riskclassifications (checked Oct 25, 2026). */
+const RISK_URL = "https://uit.stanford.edu/guide/riskclassifications#risk-classifications";
+const RISK_TIERS = [
+  {k:"low", name:"Low Risk", items:["Research data (at data owner's discretion)","SUNet IDs","Information authorized to be available on or through Stanford's website without SUNet ID authentication","Policy and procedure manuals designated by the owner as public","Job postings","University contact information not designated by the individual as “private” in StanfordYou","Information in the public domain","Publicly available campus maps"]},
+  {k:"mod", name:"Moderate Risk", items:["Unpublished research data (at data owner's discretion)","Student records and admission applications","Faculty/staff employment applications, personnel files, benefits, salary, birth date, personal contact information","Non-public Stanford policies and policy manuals","Non-public contracts","Stanford internal memos and email, non-public reports, budgets, plans, financial info","University and employee ID numbers","Project/Task/Award (PTA) numbers","Engineering, design, and operational information regarding Stanford infrastructure"]},
+  {k:"high", name:"High Risk", items:["Health Information, including Protected Health Information (PHI)","Health Insurance policy ID numbers","Social Security Numbers","Credit card numbers","Financial account numbers","Export controlled information","Driver's license numbers","Passport and visa numbers","Donor contact information and non-public gift information"]}
+];
+/* The series' three enterprise tools: UIT service pages and rates pages (rates last modified Oct 13, 2026). */
+const SERIES_TOOLS = [
+  {t:"chatgpt", phi:true, aff:"$15 a month", req:"Standard for Affiliates tier, with a SUNet ID and a PTA", rates:"https://uit.stanford.edu/rates/openai-chatgpt-edu"},
+  {t:"claude", phi:false, aff:"$15 a month", req:"Standard for Affiliates tier, with a SUNet ID and a PTA", rates:"https://uit.stanford.edu/rates/claude"},
+  {t:"gemini", phi:true, aff:"Available; see UIT rates", req:"Standard for Affiliates tier (rates page needs a Stanford sign-in)", rates:"https://uit.stanford.edu/rates/gemini-enterprise-ai"}
+];
+/* Where output goes in this series, and the rules that govern each place (all on this page's registry). */
+const OUT_PLACES = [
+  {n:"Slack", what:"Messages and channel posts", rules:[["uit-connectors","UIT-approved connector for SoM"],["uit-tiers","the data's risk tier still applies"]]},
+  {n:"Google Docs", what:"Drafts, minutes and shared documents", rules:[["uit-connectors","UIT-approved connectors for Drive, Docs and Sheets"],["ucomm","University Communications AI guidelines for official communications"]]},
+  {n:"Publications", what:"Manuscripts, figures and references", rules:[["icmje","ICMJE recommendations"],["jama","JAMA"],["nejm","NEJM"],["nature","Nature"],["science","Science"],["copyright2","Copyright Office on AI output"]]},
+  {n:"Grants", what:"Applications and peer review", rules:[["nih-orig","NIH NOT-OD-25-132: originality and application cap"],["nih-review","NIH NOT-OD-23-149: no generative AI in peer review"],["nsf","NSF merit review notice"]]}
+];
+const polA = (id, label) => POL[id].u ? extLink(POL[id].u, esc(label)) : esc(label);
+
+function tourCardHTML(it){
+  if(it==="@map"){
+    const total = DIMS.reduce((n,d)=>n+colChains(d.k).length, 0);
+    return `<div class="tc"><h2 class="tc-q">How clear the rules are, by question</h2>
+      <div class="tc-scroll"><table class="tc-map"><thead><tr><th></th>${ST3.map(k=>`<th>${st(k)}<span>${STATUS[k]}</span></th>`).join("")}</tr></thead>
+      <tbody>${DIMS.map(d=>{ const cs = colChains(d.k); return `<tr><th><span class="tc-dim" style="color:${d.color}">${ic(DIMICON[d.k])}${d.name}</span><span class="tc-sub">${TOUR_Q[d.k]}</span></th>${ST3.map(k=>`<td class="st-${k}">${cs.filter(c=>c.status===k).length}</td>`).join("")}</tr>`; }).join("")}</tbody></table></div>
+      <p class="tc-note">${total} cases across ${LENSES.length} roles.</p></div>`;
+  }
+  if(it==="@in"){
+    return `<div class="tc wide">${dimHead("in")}<h2 class="tc-q">${TOUR_Q.in}</h2>
+      <p class="tc-gov">Stanford sorts data into three risk tiers, and UIT approves each AI tool for specific tiers.</p>
+      <div class="tiers">${RISK_TIERS.map(r=>`<section class="tier ${r.k}"><h3>${r.name}</h3><ul>${r.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`).join("")}</div>
+      <p class="tc-alert"><b>No AI tool is approved</b> for payment card data, Controlled Unclassified Information or export-controlled information, including tools approved for High Risk data. <span class="tc-srci">Source: ${extLink(RISK_URL, "UIT, Risk Classifications")}</span></p></div>`;
+  }
+  if(it==="@cx"){
+    const yes = `<span class="yes" aria-label="Approved">✓</span>`;
+    return `<div class="tc wide">${dimHead("cx")}<h2 class="tc-q">The three tools this series focuses on</h2>
+      <div class="tc-scroll"><table class="tc-table"><thead><tr><th>Tool</th><th class="c">Low</th><th class="c">Moderate</th><th class="c">High</th><th class="c">PHI</th><th>Affiliates</th></tr></thead>
+      <tbody>${SERIES_TOOLS.map(x=>`<tr><th>${extLink(TOOL[x.t].u, esc(TOOL[x.t].n))}</th><td class="c">${yes}</td><td class="c">${yes}</td><td class="c">${yes}</td>
+        <td class="c">${x.phi ? yes : `<span class="no">No</span><small>PHI only through the AI API Gateway</small>`}</td>
+        <td>${extLink(x.rates, x.aff)}<small>${esc(x.req)}</small></td></tr>`).join("")}</tbody></table></div>
+      <ul class="tc-points"><li>All three are approved for Low, Moderate and High Risk data. Only ChatGPT Edu and Gemini Enterprise are approved for PHI today, in the UIT-managed workspaces you reach through Stanford single sign-on.</li>
+        <li>The Standard tier is free for active faculty, staff, students and postdocs. Visiting scholars, fellows and other affiliates outside that tier can buy a Standard for Affiliates seat.</li></ul>
+      <p class="tc-src">Sources: UIT service pages for ${SERIES_TOOLS.map(x=>extLink(TOOL[x.t].u, esc(TOOL[x.t].n))).join(", ")}; UIT rates pages.</p></div>`;
+  }
+  if(it==="@out"){
+    return `<div class="tc wide">${dimHead("out")}<h2 class="tc-q">${TOUR_Q.out}</h2>
+      <p class="tc-gov">Where output goes in this series, and what governs it there.</p>
+      <div class="tc-scroll"><table class="tc-table"><thead><tr><th>Where it goes</th><th>What comes out</th><th>What governs it</th></tr></thead>
+      <tbody>${OUT_PLACES.map(p=>`<tr><th>${esc(p.n)}</th><td>${esc(p.what)}</td><td>${p.rules.map(([id,l])=>polA(id,l)).join("; ")}</td></tr>`).join("")}</tbody></table></div>
+      <p class="tc-src">For SoM users, Zoom and M365 connectors are off. Claude has the most connectors approved, but is not approved for PHI. Source: ${extLink(POL["uit-connectors"].u, "UIT, Available Connectors for AI Services")}</p></div>`;
+  }
+  return "";
+}
+function showTourCard(it){ tourCard.innerHTML = tourCardHTML(it); tourCard.scrollTop = 0; document.body.classList.add("tour-card"); tourCardOn = true; tourCardIt = it; updateHud(); }
+function hideTourCard(){ document.body.classList.remove("tour-card"); tourCardOn = false; }
+function tourGo(i, fromEnd, keep){
+  ti = Math.max(0, Math.min(TOUR.length-1, i));
+  const it = TOUR[ti];
+  if(TOUR_CARDS.includes(it)){ showTourCard(it); return; }
+  hideTourCard();
+  if(it==="@cube"){
+    si = 0;
+    const wasAtCube = current===ROOT;
+    if(!wasAtCube) goTo("root"); else updateHud();
+    // land on the Overview face once the zoom out has settled
+    const tok = navTok;
+    setTimeout(()=>{ if(tok===navTok && current===ROOT && front!==0){ showFace(0); lastTouch = Date.now(); } }, wasAtCube ? 0 : 1250);
+    return;
+  }
+  if(isRole(it)){ si = stopFor(it); if(current!==F[it]) goTo(it); else updateHud(); return; }
+  openCase(it); setStep(it, fromEnd ? 5 : (keep ? (stepNow[it]||1) : 1)); updateHud();
+}
+/* True when the screen shows the current stop; false after the presenter has clicked away from it. */
+function tourOnStop(){
+  const it = TOUR[ti];
+  if(TOUR_CARDS.includes(it)) return tourCardOn && tourCardIt===it;
+  if(tourCardOn || !current) return false;
+  return it==="@cube" ? current===ROOT : current.id===it;
+}
+function tourNext(){
+  if(!tourOnStop()) return tourGo(ti, false, true);
+  const it = TOUR[ti];
+  if(CH[it]){ const s = stepNow[it]||1; if(s<5){ setStep(it, s+1); updateHud(); return; } }
+  if(ti < TOUR.length-1) tourGo(ti+1);
+}
+function tourPrev(){
+  if(!tourOnStop()) return tourGo(ti, false, true);
+  const it = TOUR[ti];
+  if(CH[it]){ const s = stepNow[it]||1; if(s>1){ setStep(it, s-1); updateHud(); return; } }
+  if(ti > 0) tourGo(ti-1, true);
+}
+function tourHud(){
+  const it = TOUR[ti], on = tourOnStop(), isCase = !!CH[it], s = stepNow[it]||1, atEnd = ti===TOUR.length-1;
+  const nb = document.getElementById("nextBtn");
+  nb.textContent = !on ? "Back to tour ›" : (isCase && s<5) ? "Next step ›" : (atEnd ? "End of tour" : "Next ›");
+  nb.disabled = on && atEnd && !(isCase && s<5);
+  document.getElementById("prevBtn").disabled = on && ti===0 && !(isCase && s>1);
+  const pos = document.getElementById("tourPos"); if(pos) pos.textContent = `Stop ${ti+1} of ${TOUR.length}`;
+}
+if(TOUR){
+  document.body.classList.add("touring");
+  document.body.classList.remove("tally-open"); document.getElementById("tallyBtn").classList.remove("on");
+  const pos = document.createElement("span"); pos.id = "tourPos";
+  const hint = document.querySelector("#nav .hint");
+  hint.before(pos); hint.textContent = "← → steps · N / P skip a stop";
+  document.getElementById("outBtn").onclick = ()=>{ if(tourCardOn){ hideTourCard(); updateHud(); } else zoomOut(); };
+  document.getElementById("crumbs").addEventListener("click", ()=>{ if(tourCardOn) hideTourCard(); }, true);
+  document.addEventListener("keydown", e=>{
+    if(document.querySelector("dialog[open]")) return;
+    if(e.target.tagName==="INPUT" || e.target.tagName==="TEXTAREA") return;
+    if(e.key==="n" || e.key==="N"){ e.preventDefault(); tourGo(tourOnStop() ? ti+1 : ti); }
+    else if(e.key==="p" || e.key==="P"){ e.preventDefault(); tourGo(tourOnStop() ? ti-1 : ti); }
+    else if(e.key==="Escape" && tourCardOn){ e.preventDefault(); e.stopImmediatePropagation(); hideTourCard(); updateHud(); }
+  }, true);
+  const hs = decodeURIComponent((location.hash||"").slice(1));
+  let start = /^\d+$/.test(hs) ? (+hs)-1 : TOUR.indexOf(hs.toUpperCase());
+  if(start < 0) start = TOUR.indexOf(hs.toLowerCase());
+  setTimeout(()=>tourGo(Math.max(0, start)), 80);
+}
+
 /* ================= INIT ================= */
 build(); buildCube(); buildMap(); sizeCube(); fitLists();
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitLists);
 if(spinPaused){ const sb=document.getElementById("spinBtn"); sb.textContent="Rotate"; sb.setAttribute("aria-pressed","true"); }
 document.querySelectorAll("[data-st]").forEach(el=>{ el.outerHTML = st(el.dataset.st); });
-if(window.innerWidth > 900){ document.body.classList.add("tally-open"); document.getElementById("tallyBtn").classList.add("on"); }
+if(window.innerWidth > 900 && !TOUR){ document.body.classList.add("tally-open"); document.getElementById("tallyBtn").classList.add("on"); }
 if(FOLLOW){ document.body.classList.add("follow"); showAll = true; document.getElementById("showAll").checked = true; document.body.classList.add("tally-open"); document.getElementById("tallyBtn").classList.add("on"); }
 goTo("root"); si = 0; renderTally(); updateHud();
 /* deep link: #clin, #clin-out, #C6 */
-(function(){ const h = decodeURIComponent((location.hash||"").slice(1)); if(h && F[h] && h!=="root") setTimeout(()=>navigate(h), 50); })();
+(function(){ const h = decodeURIComponent((location.hash||"").slice(1)); if(!TOUR && h && F[h] && h!=="root") setTimeout(()=>navigate(h), 50); })();
 </script>
 </body>
 </html>
