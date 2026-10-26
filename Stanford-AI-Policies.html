@@ -563,7 +563,7 @@ const POL = {
  "authorship":{n:"Stanford Research Policy Handbook: Academic Authorship",o:"Dean of Research",u:"https://doresearch.stanford.edu/policies/research-policy-handbook/conduct-research/academic-authorship",k:"req"},
  "irb":{n:"Stanford IRB: Digital Health Technologies guidance",o:"Stanford IRB",u:"https://irb.stanford.edu/for-researchers/digital-health-technologies",k:"req"},
  "ucomm":{n:"AI guidelines for marketing and communications",o:"University Communications",u:"https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",k:"guid"},
- "lane":{n:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",o:"Publishers",u:"",k:"req"},
+ "lane":{n:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",o:"Publishers",u:"https://lane.stanford.edu/contacts/index.html",k:"req"},
  "fda-cds":{n:"FDA Clinical Decision Support Software guidance",o:"FDA CDRH",u:"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software",k:"guid"},
  "ab1979":{n:"California AB 1979: AI in health care services (from 2027-01-01)",o:"Medical Board of California",u:"https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1979",k:"req"},
  "ab3030":{n:"California AB 3030: GenAI notice in patient communications (Medical Board guidance)",o:"Medical Board of California / CDPH",u:"https://www.mbc.ca.gov/Resources/Medical-Resources/GenAI-Notification.aspx",k:"req"},
@@ -591,31 +591,32 @@ const POL = {
  "mello-inform":{n:"Ethical obligations to inform patients about AI tools (JAMA 2025)",o:"Mello, Char and Xu (Stanford)",u:"https://doi.org/10.1001/jama.2025.11417",k:"guid",sa:true},
  "coding-tips":{n:"Twelve quick tips for AI-assisted coding in science (PLoS Comput Biol 2026)",o:"Bridgeford, Poldrack et al. (Stanford)",u:"https://doi.org/10.1371/journal.pcbi.1014428",k:"guid",sa:true},
  "sgim":{n:"SGIM position statement on generative AI (J Gen Intern Med 2025)",o:"Society of General Internal Medicine (Stanford co-authors)",u:"https://doi.org/10.1007/s11606-024-09102-0",k:"guid",sa:true}};
+/* u: the primary source behind each tool's status line, where one is public (used in My list and the PDF) */
 const TOOL = {
- "chatgpt":{n:"ChatGPT Edu",d:"All risk tiers including PHI, in the UIT-managed workspace; affiliates included"},
- "gemini":{n:"Gemini Enterprise",d:"All risk tiers including PHI (UIT-managed); affiliates included"},
- "claude":{n:"Claude for Education",d:"All tiers except PHI; PHI only via the AI API Gateway"},
- "playground":{n:"AI Playground",d:"High-Risk data, no PHI"},
- "securegpt":{n:"Secure GPT",d:"PHI (SHC/SoM)"},
+ "chatgpt":{n:"ChatGPT Edu",d:"All risk tiers including PHI, in the UIT-managed workspace; affiliates included",u:"https://uit.stanford.edu/service/openai-chatgpt-edu"},
+ "gemini":{n:"Gemini Enterprise",d:"All risk tiers including PHI (UIT-managed); affiliates included",u:"https://uit.stanford.edu/service/gemini-enterprise-ai"},
+ "claude":{n:"Claude for Education",d:"All tiers except PHI; PHI only via the AI API Gateway",u:"https://uit.stanford.edu/service/claude"},
+ "playground":{n:"AI Playground",d:"High-Risk data, no PHI",u:"https://uit.stanford.edu/service/aiplayground"},
+ "securegpt":{n:"Secure GPT",d:"PHI (SHC/SoM)",u:POL["uit-services"].u},
  "chatehr":{n:"ChatEHR in Epic",d:"PHI; chat over the chart in Epic"},
- "dax":{n:"DAX / Dragon Copilot",d:"Ambient notes and draft orders; patients notified, may opt out"},
+ "dax":{n:"DAX / Dragon Copilot",d:"Ambient notes and draft orders; patients notified, may opt out",u:POL["shc-dax"].u},
  "inbasket":{n:"Epic in-basket AI drafts",d:"Patient portal replies"},
- "openevidence":{n:"OpenEvidence",d:"Public tool; no PHI"},
+ "openevidence":{n:"OpenEvidence",d:"Public tool; no PHI",u:POL["uit-tiers"].u},
  "refai":{n:"AI inside licensed references (UpToDate Expert AI, Dyna AI)",d:"Covered by each platform’s terms"},
  "pubai":{n:"Publisher AI features (ScienceDirect, Ovid)",d:"Covered by platform terms"},
- "litsearch":{n:"AI literature search (Elicit, Consensus, Scite)",d:"Public tools; Low-risk queries only"},
+ "litsearch":{n:"AI literature search (Elicit, Consensus, Scite)",d:"Public tools; Low-risk queries only",u:POL["uit-tiers"].u},
  "deep":{n:"Deep research (ChatGPT, Gemini)",d:"Multi-step web synthesis"},
  "projects":{n:"Projects, custom GPTs and Gems",d:"Persistent document sets in enterprise tools"},
- "agents":{n:"Agents and connectors (Claude Code, Cowork)",d:"UIT agentic risk classes apply"},
- "connectors":{n:"Approved connectors: Slack, Smartsheet, Google Drive, Docs, Sheets",d:"Zoom and M365 are off for SoM. Claude has the most connectors but is not approved for PHI"},
- "resconn":{n:"Research connectors: PubMed, bioRxiv, Consensus, Elicit, alphaXiv, Scite",d:"Keep restricted or unpublished data out of queries"},
- "consumer":{n:"Consumer chatbots and personal accounts",d:"Low-risk data only"},
+ "agents":{n:"Agents and connectors (Claude Code, Cowork)",d:"UIT agentic risk classes apply",u:POL["uit-agentic"].u},
+ "connectors":{n:"Approved connectors: Slack, Smartsheet, Google Drive, Docs, Sheets",d:"Zoom and M365 are off for SoM. Claude has the most connectors but is not approved for PHI",u:POL["uit-connectors"].u},
+ "resconn":{n:"Research connectors: PubMed, bioRxiv, Consensus, Elicit, alphaXiv, Scite",d:"Keep restricted or unpublished data out of queries",u:POL["uit-connectors"].u},
+ "consumer":{n:"Consumer chatbots and personal accounts",d:"Low-risk data only",u:POL["uit-tiers"].u},
  "feeds":{n:"Literature feeds (Semantic Scholar, Undermind)",d:"Alerts"},
  "ithenticate":{n:"iThenticate with AI-writing detection",d:"Pre-submission check"},
  "proofig":{n:"Proofig",d:"Checks research images for plagiarism"},
- "detectors":{n:"AI-writing detectors",d:"Not fit as misconduct evidence"},
- "tutors":{n:"AI tutors and simulated patients",d:"Course-designated student use"},
- "notetakers":{n:"Personal AI note-takers (Otter and similar)",d:"Not on UIT’s approved list"}
+ "detectors":{n:"AI-writing detectors",d:"Not fit as misconduct evidence",u:POL["aiwg"].u},
+ "tutors":{n:"AI tutors and simulated patients",d:"Course-designated student use",u:POL["mdh"].u},
+ "notetakers":{n:"Personal AI note-takers (Otter and similar)",d:"Not on UIT’s approved list",u:POL["uit-services"].u}
 };
 const D = d => "https://doi.org/"+d;
 const CITE = {
@@ -1510,15 +1511,17 @@ function myGroups(){
   return [
     {title:"Rules in force", cls:"req", css:"var(--cardinal)", rgb:[140,21,21], rows:ids("p").filter(id=>POL[id].k==="req").map(pol)},
     {title:"Guidance", cls:"guid", css:"var(--poppy)", rgb:[178,98,0], rows:ids("p").filter(id=>POL[id].k!=="req").map(pol)},
-    {title:"Tools", cls:"tool", css:"var(--lagunita)", rgb:[0,124,146], rows:ids("t").map(id=>({k:"t:"+id, name:TOOL[id].n, html:esc(TOOL[id].n), sub:TOOL[id].d, meta:rolesOf(toolWhere[id]), where:toolWhere[id]}))},
+    {title:"Tools", cls:"tool", css:"var(--lagunita)", rgb:[0,124,146], rows:ids("t").map(id=>({k:"t:"+id, name:TOOL[id].n, url:TOOL[id].u, html:TOOL[id].u ? `<a href="${esc(TOOL[id].u)}" target="_blank" rel="noopener">${esc(TOOL[id].n)}</a>` : esc(TOOL[id].n), sub:TOOL[id].d, meta:rolesOf(toolWhere[id]), where:toolWhere[id]}))},
     {title:"Cases", cls:"case", css:"var(--plum)", rgb:[98,0,89], rows:ids("c").map(id=>{ const c = CH[id];
-      return {k:"c:"+id, name:c.t, html:`${st(c.status)} <span class="golink" data-go="${id}">${esc(c.t)}</span>`, sub:c.ex, meta:`${c.lens.short} · ${c.dim.name} · ${STATUS[c.status]}`, where:[CARD[c.lens.id+"-"+c.dim.k]]}; })}
+      const srcs = (c.cites||[]).map(k=>({kind:"Evidence", label:CITE[k][0], url:CITE[k][1]})).concat(c.pol.filter(p=>POL[p].u).map(p=>({kind:"Limit", label:POL[p].n, url:POL[p].u})));
+      return {k:"c:"+id, name:c.t, html:`${st(c.status)} <span class="golink" data-go="${id}">${esc(c.t)}</span>`, sub:c.ex, meta:`${c.lens.short} · ${c.dim.name} · ${STATUS[c.status]}`, srcs, where:[CARD[c.lens.id+"-"+c.dim.k]]}; })}
   ].filter(g=>g.rows.length);
 }
+const POL_SHORT = n => n.length > 60 ? n.slice(0, 57).replace(/\s+\S*$/, "") + "…" : n;
 function renderMine(){
   const gs = myGroups();
   let h = gs.length ? "" : `<div class="empty">Nothing saved yet. Tap <b>+</b> next to a tool, policy, guidance or case in the other views and it appears here.</div>`;
-  h += gs.map(g=>`<div class="mygroup"><h4 style="color:${g.css}">${g.title} · ${g.rows.length}</h4>${g.rows.map(r=>`<div class="prow ${g.cls}">${addBtn(r.k, r.name)}<div><div class="pn">${r.html}</div><div class="po">${esc(r.sub)}</div><div>${r.where.map(chip).join("")}</div></div></div>`).join("")}</div>`).join("");
+  h += gs.map(g=>`<div class="mygroup"><h4 style="color:${g.css}">${g.title} · ${g.rows.length}</h4>${g.rows.map(r=>`<div class="prow ${g.cls}">${addBtn(r.k, r.name)}<div><div class="pn">${r.html}</div><div class="po">${esc(r.sub)}</div>${r.srcs && r.srcs.length ? `<div class="po">Sources: ${r.srcs.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.kind==="Evidence" ? x.label : POL_SHORT(x.label))}</a>`).join(" · ")}</div>` : ""}<div>${r.where.map(chip).join("")}</div></div></div>`).join("")}</div>`).join("");
   return h + `<label class="notes"><span>My notes</span><textarea id="myNotes" placeholder="Questions, follow-ups, people to contact…">${esc(my.notes)}</textarea></label>`;
 }
 
@@ -1544,8 +1547,8 @@ function makePDF(){
   const font = (style, size, rgb) => { doc.setFont(style==="serif" ? "times" : "helvetica", style==="serif" ? "bold" : style); doc.setFontSize(size); doc.setTextColor(...rgb); };
   let y = M;
   const need = h => { if(y + h <= BOTTOM) return; doc.addPage(); y = M; font("normal", 9, MUTED); doc.text("My AI tools and policies (continued)", M, y); y += 24; };
-  const heading = (title, rgb) => {
-    need(64);
+  const heading = (title, rgb, first = 22) => {
+    need(42 + first);
     doc.setFillColor(...rgb); doc.rect(M, y - 10, 4, 13, "F");
     font("bold", 13, rgb); doc.text(pdfText(title), X - 1, y);
     y += 7; doc.setDrawColor(...RULE); doc.setLineWidth(.6); doc.line(M, y, PW - M, y); y += 18;
@@ -1561,17 +1564,24 @@ function makePDF(){
   font("serif", 24, INK); doc.text("My AI tools and policies", M, y); y += 19;
   font("normal", 10, MUTED); doc.text(pdfText(`From Stanford AI Policies · AI Tools and Practice Series · ${todayStr()}`), M, y); y += 13;
   font("normal", 10, LINK); doc.textWithLink(PAGE_URL.replace(/^https:\/\//, ""), M, y, {url:PAGE_URL}); y += 30;
+  // wrap a row's lines once so its height is known before placing it (or its group heading)
+  const layout = r => {
+    font("bold", 11, INK); const nl = doc.splitTextToSize(pdfText(r.name), W - 12);
+    font("normal", 9.5, MUTED); const sl = doc.splitTextToSize(pdfText(r.sub || ""), W - 12).concat(doc.splitTextToSize(pdfText(r.meta), W - 12));
+    font("normal", 8.5, LINK); const ul = r.url ? doc.splitTextToSize(r.url, W - 12) : [];
+    const xl = (r.srcs || []).map(x=>({url:x.url, lines:doc.splitTextToSize(pdfText(`${x.kind}: ${x.label} – ${x.url}`), W - 12)}));
+    return {r, nl, sl, ul, xl, h: nl.length*14 + sl.length*12 + ul.length*11 + xl.reduce((a, x)=>a + x.lines.length*11, 0) + 4};
+  };
   myGroups().forEach(g=>{
-    heading(`${g.title} (${g.rows.length})`, g.rgb);
-    g.rows.forEach(r=>{
-      font("bold", 11, INK); const nl = doc.splitTextToSize(pdfText(r.name), W - 12);
-      font("normal", 9.5, MUTED); const sl = doc.splitTextToSize(pdfText(r.sub || ""), W - 12).concat(doc.splitTextToSize(pdfText(r.meta), W - 12));
-      font("normal", 8.5, LINK); const ul = r.url ? doc.splitTextToSize(r.url, W - 12) : [];
-      need(nl.length*14 + sl.length*12 + ul.length*11 + 4);
+    const rows = g.rows.map(layout);
+    heading(`${g.title} (${g.rows.length})`, g.rgb, rows[0].h);
+    rows.forEach(({r, nl, sl, ul, xl, h})=>{
+      need(h);
       doc.setFillColor(...g.rgb); doc.circle(M + 3.5, y - 3.6, 2.2, "F");
       font("bold", 11, INK); nl.forEach(ln=>{ doc.text(ln, X, y); if(r.url) doc.link(X, y - 10, doc.getTextWidth(ln), 13, {url:r.url}); y += 14; });
       font("normal", 9.5, MUTED); sl.forEach(ln=>{ doc.text(ln, X, y); y += 12; });
       font("normal", 8.5, LINK); ul.forEach(ln=>{ doc.textWithLink(ln, X, y, {url:r.url}); y += 11; });
+      xl.forEach(x=>x.lines.forEach(ln=>{ doc.textWithLink(ln, X, y, {url:x.url}); y += 11; }));
       y += 10;
     });
     y += 8;
@@ -1596,7 +1606,7 @@ function makePDF(){
 function printList(){
   document.getElementById("printSheet").innerHTML = `<header><img src="${LOGO_LANE}" alt="Lane Medical Library">${LOGO_OAA ? `<img src="${LOGO_OAA}" alt="Office of Academic Affairs">` : `<span>Office of Academic Affairs</span>`}</header>
     <h1>My AI tools and policies</h1><p class="pmeta">From Stanford AI Policies · AI Tools and Practice Series · ${todayStr()}<br>${esc(PAGE_URL)}</p>
-    ${myGroups().map(g=>`<h2 style="color:${g.css}">${g.title} (${g.rows.length})</h2><ul>${g.rows.map(r=>`<li><b>${esc(r.name)}</b><br><small>${esc(r.sub || "")}${r.sub ? " · " : ""}${esc(r.meta)}</small>${r.url ? `<br><small>${esc(r.url)}</small>` : ""}</li>`).join("")}</ul>`).join("")}
+    ${myGroups().map(g=>`<h2 style="color:${g.css}">${g.title} (${g.rows.length})</h2><ul>${g.rows.map(r=>`<li><b>${r.url ? `<a href="${esc(r.url)}">${esc(r.name)}</a>` : esc(r.name)}</b><br><small>${esc(r.sub || "")}${r.sub ? " · " : ""}${esc(r.meta)}</small>${r.url ? `<br><small>${esc(r.url)}</small>` : ""}${(r.srcs || []).map(x=>`<br><small>${x.kind}: <a href="${esc(x.url)}">${esc(x.label)}</a> – ${esc(x.url)}</small>`).join("")}</li>`).join("")}</ul>`).join("")}
     ${my.notes.trim() ? `<h2>My notes</h2><p class="pnotes">${esc(my.notes.trim())}</p>` : ""}
     <footer>Lane Medical Library and Office of Academic Affairs, Stanford Medicine. Not legal advice. Policies change; check each linked source before you rely on it.</footer>`;
   window.print();
