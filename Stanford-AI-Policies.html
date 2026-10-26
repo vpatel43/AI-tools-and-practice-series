@@ -412,9 +412,27 @@ body.tour-card #tourCard{padding-top:16px}
 .tc-table .yes{color:var(--palo);font-weight:700;font-size:26px;line-height:1}
 .tc-table .no{color:var(--cardinal);font-weight:700}
 .tc-table small{display:block;font-size:14px;line-height:1.3;color:var(--muted);font-weight:400;margin-top:3px}
+.perms{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.perm{position:relative;border:1px solid var(--line);border-top:5px solid var(--lagunita);border-radius:10px;padding:16px 20px 14px 64px;background:var(--surface)}
+.perm-n{position:absolute;left:18px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--lagunita);color:var(--surface);font:700 18px/32px var(--font);text-align:center}
+.perm h3{margin:0 0 6px;font-size:22px;color:var(--lagunita)}
+.perm p{margin:6px 0;font-size:17px;line-height:1.4}
+.perm .perm-q{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.3}
+.perm .perm-ask{font-size:15px;color:var(--muted)}
+.tc-table.agree{font-size:16px}
+.tc-table.agree th,.tc-table.agree td{padding:9px 10px}
+.tc-table.agree tbody th{font-size:18px;white-space:nowrap;color:var(--cardinal)}
+.tc-table.agree .atxt{font-size:15px;line-height:1.38}
+.amaps{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.amap{border-left:4px solid var(--ac);padding:1px 0 1px 9px;font-size:15px;line-height:1.3}
+.amap b{display:inline-flex;align-items:center;gap:4px;color:var(--ac);font-size:14px;margin-right:6px}
+.tc-table.agree col.c1{width:15%} .tc-table.agree col.c2{width:50%} .tc-table.agree col.c3{width:35%}
+.amap b .ic{width:1.05em;height:1.05em}
+.tc-notes{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:12px}
+.tc-notes p{margin:0;font-size:15.5px;line-height:1.4;color:var(--ink)}
 .tc-points{margin:14px 0 0;padding-left:22px;font-size:18px;line-height:1.45}
 .tc-points li{margin:4px 0}
-@media (max-width:900px){ .tiers{grid-template-columns:1fr} .tc-table{font-size:15px} .tc-table tbody th{font-size:16px;white-space:normal} .tc-points{font-size:15px} }
+@media (max-width:900px){ .tiers,.perms,.tc-notes{grid-template-columns:1fr} .tc-table{font-size:15px} .tc-table tbody th{font-size:16px;white-space:normal} .tc-points{font-size:15px} }
 
 /* ---------- printable list (fallback when the PDF library can't load) ---------- */
 #printSheet{display:none}
@@ -608,7 +626,7 @@ const POL = {
  "pc632":{n:"California Penal Code §632: all-party consent to record",o:"State of California",u:"https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=632.",k:"req"},
  "uit-tiers":{n:"Stanford Responsible AI rules and data risk classification",o:"UIT Information Security Office",u:"https://uit.stanford.edu/security/responsibleai",k:"req"},
  "uit-services":{n:"UIT approved AI services by risk tier",o:"University IT",u:"https://uit.stanford.edu/ai/services",k:"req"},
- "uit-connectors":{n:"UIT approved connectors for AI services (SoM: Zoom and M365 disabled)",o:"University IT",u:"https://uit.stanford.edu/ai/connectors",k:"req"},
+ "uit-connectors":{n:"UIT approved connectors for AI services (SoM: Zoom and M365 off in Claude, Zoom off in ChatGPT Edu)",o:"University IT",u:"https://uit.stanford.edu/ai/connectors",k:"req"},
  "uit-agentic":{n:"UIT agentic AI risk classifications",o:"UIT Information Security Office",u:"https://uit.stanford.edu/security/agenticai/riskclassifications",k:"req"},
  "shc":{n:"Stanford Health Care responsible use of AI tools",o:"SHC / Stanford Medicine TDS",u:"https://stanfordhealthcare.org/campaigns/ai-education/responsible-use.html",k:"req"},
  "furm":{n:"FURM: SHC review of each new AI tool before adoption (fair, useful, reliable)",o:"Stanford Health Care AI governance group",u:"https://catalyst.nejm.org/doi/full/10.1056/CAT.24.0131",k:"req"},
@@ -622,7 +640,7 @@ const POL = {
  "ucomm":{n:"AI guidelines for marketing and communications",o:"University Communications",u:"https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",k:"guid"},
  "lane":{n:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",o:"Publishers",u:"https://lane.stanford.edu/contacts/index.html",k:"req"},
  "fda-cds":{n:"FDA Clinical Decision Support Software guidance",o:"FDA CDRH",u:"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software",k:"guid"},
- "ab1979":{n:"California AB 1979: AI in health care services (from 2027-01-01)",o:"Medical Board of California",u:"https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1979",k:"req"},
+ "ab1979":{n:"California AB 1979: AI in health care services (from 2027-01-01)",o:"California Legislature (enforced by the Medical Board)",u:"https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1979",k:"req"},
  "ab3030":{n:"California AB 3030: GenAI notice in patient communications (Medical Board guidance)",o:"Medical Board of California / CDPH",u:"https://www.mbc.ca.gov/Resources/Medical-Resources/GenAI-Notification.aspx",k:"req"},
  "ab489":{n:"California AB 489: AI may not imply a licensed human",o:"California health professions boards",u:"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB489",k:"req"},
  "feha":{n:"California FEHA automated-decision system regulations",o:"California Civil Rights Department",u:"https://calcivilrights.ca.gov/2025/06/30/civil-rights-council-secures-approval-for-regulations-to-protect-against-employment-discrimination-related-to-artificial-intelligence/",k:"req"},
@@ -650,8 +668,8 @@ const POL = {
  "sgim":{n:"SGIM position statement on generative AI (J Gen Intern Med 2025)",o:"Society of General Internal Medicine (Stanford co-authors)",u:"https://doi.org/10.1007/s11606-024-09102-0",k:"guid",sa:true}};
 /* u: the primary source behind each tool's status line, where one is public (used in My list and the PDF) */
 const TOOL = {
- "chatgpt":{n:"ChatGPT Edu",d:"All risk tiers including PHI, in the UIT-managed workspace; affiliates can buy access",u:"https://uit.stanford.edu/service/openai-chatgpt-edu"},
- "gemini":{n:"Gemini Enterprise",d:"All risk tiers including PHI (UIT-managed); affiliates can buy access",u:"https://uit.stanford.edu/service/gemini-enterprise-ai"},
+ "chatgpt":{n:"ChatGPT Edu",d:"UIT approves all tiers including PHI (managed workspace); for chart data, your clinical site’s policy comes first",u:"https://uit.stanford.edu/service/openai-chatgpt-edu"},
+ "gemini":{n:"Gemini Enterprise",d:"UIT approves all tiers including PHI (managed workspace); for chart data, your clinical site’s policy comes first",u:"https://uit.stanford.edu/service/gemini-enterprise-ai"},
  "claude":{n:"Claude for Education",d:"All tiers except PHI; PHI only via the AI API Gateway",u:"https://uit.stanford.edu/service/claude"},
  "playground":{n:"AI Playground",d:"High-Risk data, no PHI",u:"https://uit.stanford.edu/service/aiplayground"},
  "securegpt":{n:"Secure GPT",d:"PHI (SHC/SoM)",u:POL["uit-services"].u},
@@ -665,7 +683,7 @@ const TOOL = {
  "deep":{n:"Deep research (ChatGPT, Gemini)",d:"Multi-step web synthesis"},
  "projects":{n:"Projects, custom GPTs and Gems",d:"Persistent document sets in enterprise tools"},
  "agents":{n:"Agents and connectors (Claude Code, Cowork)",d:"UIT agentic risk classes apply",u:POL["uit-agentic"].u},
- "connectors":{n:"Approved connectors: Slack, Smartsheet, Google Drive, Docs, Sheets",d:"Zoom and M365 are off for SoM. Claude has the most connectors but is not approved for PHI",u:POL["uit-connectors"].u},
+ "connectors":{n:"Approved connectors: Slack, Smartsheet, Google Drive, Docs, Sheets",d:"For SoM, Zoom and M365 are off in Claude and Zoom in ChatGPT Edu. Claude has the most connectors but is not approved for PHI",u:POL["uit-connectors"].u},
  "resconn":{n:"Research connectors: PubMed, bioRxiv, Consensus, Elicit, alphaXiv, Scite",d:"Keep restricted or unpublished data out of queries",u:POL["uit-connectors"].u},
  "consumer":{n:"Consumer chatbots and personal accounts",d:"Low-risk data only",u:POL["uit-tiers"].u},
  "feeds":{n:"Literature feeds (Semantic Scholar, Undermind)",d:"Alerts"},
@@ -677,6 +695,8 @@ const TOOL = {
 };
 const D = d => "https://doi.org/"+d;
 const CITE = {
+ lukac:["Lukac et al., NEJM AI 2025 (RCT)",D("10.1056/AIoa2501000")], afshar:["Afshar et al., NEJM AI 2025 (RCT)",D("10.1056/AIoa2500945")],
+ flanagin:["Flanagin et al., JAMA 2026",D("10.1001/jama.2026.16613")], nejmretract:["NEJM retraction, 2026",D("10.1056/NEJMc2605962")],
  qazi:["Qazi et al., NEJM AI 2026",D("10.1056/AIoa2501001")], mcgaughey:["McGaughey et al., Acad Med 2026",D("10.1093/acamed/wvag287")],
  budzyn:["Budzyń et al., Lancet Gastroenterol Hepatol 2025",D("10.1016/S2468-1253(25)00133-5")], taylor:["Taylor et al., JMIR Med Inform 2026",D("10.2196/86474")],
  biro:["Biro et al., npj Digit Med 2025",D("10.1038/s41746-025-01586-2")], chen:["Chen et al., Lancet Digit Health 2024",D("10.1016/S2589-7500(24)00060-8")],
@@ -743,12 +763,12 @@ const LENSES = [
        pol:["hipaa","cmia","uit-tiers"], own:["UIT Information Security Office","SHC Privacy & Compliance","HHS OCR (enforcement)"], status:"clear"},
       {id:"C2", t:"PHI in ChatGPT Edu: approved, but only in the UIT-managed workspace",
        ex:"A clinician summarizes a discharge in ChatGPT, signed in with a stanford.edu address but in a workspace UIT did not provision.",
-       ev:"UIT manages ChatGPT Edu and Gemini Enterprise and approves both for every risk tier, PHI included; affiliates can buy a Standard tier. The approval covers only the UIT-managed workspace (released June 30, 2026), reached through Stanford single sign-on. A stanford.edu address can belong to other ChatGPT workspaces, which are not approved for Stanford data. An April 2025 page calling Secure GPT the only PHI-approved LLM predates these approvals.",
+       ev:"UIT approves ChatGPT Edu and Gemini Enterprise for every risk tier, PHI included, at the university level and only in the UIT-managed workspace reached through Stanford single sign-on. A stanford.edu address can belong to other ChatGPT workspaces, which are not approved for Stanford data. University and Stanford Medicine approvals are separate: for anything from an SHC or LPCH chart, the clinical site’s policy comes first, and the MD Handbook still lists Secure GPT for sensitive information.",
        evb:"req", cites:[],
        bear:{others:"The patient", inst:"PHI outside Stanford’s agreement", self:"PHI in an unapproved workspace"},
        when:"immediate", whenNote:"The disclosure happens when you paste.",
-       pol:["uit-services","uit-tiers"], polNote:"UIT’s approval covers only its managed workspace.",
-       own:["University IT (manages ChatGPT Edu and Gemini Enterprise)"], status:"clear"},
+       pol:["uit-services","uit-tiers","shc"], polNote:"UIT’s approval covers only its managed workspace, at the university level. For chart data, the clinical site’s policy comes first.",
+       own:["University IT (manages ChatGPT Edu and Gemini Enterprise)","SHC Privacy & Compliance (chart data)"], ownNote:"Confirm with Stanford Medicine TDS or SHC Privacy before relying on the university approval.", status:"clear"},
       {id:"C3", t:"Ambient recording without documented consent, with audio that may be discoverable",
        ex:"An ambient scribe records a sensitive visit. The notice was skipped in a busy clinic, and no one knows how long the audio is kept.",
        ev:"California law bars recording a confidential conversation without every party’s consent (Penal Code §632; damages of at least $5,000 per violation). Two pending suits allege ambient scribes recorded patients without consent. SHC tells patients they will be notified before DAX records and can decline or ask to pause. It does not say how notice is documented or how long audio is kept.",
@@ -770,7 +790,7 @@ const LENSES = [
        when:"immediate", whenNote:"Acted on at the point of care.",
        pol:["fda-cds","ab1979"],
        polNote:"FDA’s CDS guidance is nonbinding and addresses developers, not clinicians, and AB 1979’s reach to these tools is unsettled. No Stanford or Medical Board rule covers relying on or documenting an AI reference answer.",
-       own:[], ownNote:"No owner for relying on these answers was found. SHC says the clinician makes the final decision, and from 2027 AB 1979 requires clinicians to keep independent judgment when decision support informs care.", status:"gap", crumple:true},
+       own:[], ownNote:"No owner for relying on these answers was found. SHC says the clinician makes the final decision, and from January 1, 2027, AB 1979 requires health facilities, clinics and physician offices to take reasonable steps so a licensed provider can exercise independent judgment when decision support informs care.", status:"gap", crumple:true},
       {id:"C5", t:"Licensed CDS content pasted into an outside AI tool",
        ex:"Copying an UpToDate topic or a drug monograph into Claude to turn into a patient handout.",
        ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",
@@ -799,16 +819,16 @@ const LENSES = [
        evb:"ev", cites:["biro","chen","worth"],
        bear:{others:"The patient", self:"Your name is on the message", inst:"AB 3030 compliance"},
        when:"immediate", whenNote:"The patient acts on it the same day.",
-       pol:["ab3030","furm","sgim"], polNote:"AB 3030 waives the GenAI notice only when a licensed or certified provider reads and reviews the message; a medical assistant’s review does not count. SHC vets each tool before adoption (FURM). SGIM, with Stanford co-authors, urges developers to stop expecting clinicians to “supervise” generative AI. In simulations, review often missed errors.",
+       pol:["ab3030","furm","sgim"], polNote:"AB 3030 covers messages with patient clinical information, not scheduling, billing or other administrative matters. It waives the GenAI notice only when a licensed or certified provider reads and reviews the message; the Medical Board says a medical assistant does not count. SHC vets each tool before adoption (FURM). SGIM, with Stanford co-authors, urges developers to stop expecting clinicians to “supervise” generative AI. In simulations, review often missed errors.",
        own:["Medical Board of California (enforcement)","SHC (deploys the tool)"], status:"clear", crumple:true},
       {id:"C7", t:"Signing an ambient-scribe note or orders with omissions or invented content",
        ex:"A note documents an exam that was not done, and it is signed at the end of clinic.",
-       ev:"In one audit of 356 notes: omissions 18%, hallucinations 11.5%, serious errors 5.3% (self-selected notes, no comparison group). Separately, vendor data showed 14.9% of notes went out unedited. In a blinded comparison of 97 visits, ambient notes had more hallucinations than physician notes from the same audio (31% vs 20%), yet reviewers preferred them (47% vs 39%). At SHC, DAX can also draft orders for medicines or tests, which the clinician reviews and signs with the note. A Stanford-led review found modest time savings (about 20 s per note in some studies) and mostly retrospective or benchmark accuracy evidence.",
-       evb:"ev", cites:["taylor","palm","worth"],
+       ev:"In one audit of 356 notes: omissions 18%, hallucinations 11.5%, serious errors 5.3% (self-selected notes, no comparison group). Separately, vendor data showed 14.9% of notes went out unedited. Blinded, across 97 visits, ambient notes had more hallucinations than physician notes from the same audio (31% vs 20%) yet were preferred (47% vs 39%). At SHC, DAX also drafts orders, signed with the note. In RCTs, Nabla saved 41 s per note vs 18 s for controls and DAX (used at SHC) showed no significant change; another trial found 0.36 fewer note hours a day and less exhaustion.",
+       evb:"ev", cites:["taylor","palm","lukac","afshar"],
        bear:{others:"The patient and the next clinician", self:"You signed it"},
        when:"delayed", whenNote:"Errors surface when someone relies on the note later.",
-       pol:["shc-dax","furm","chen-notes"],
-       polNote:"Stanford-authored guidance: introduce scribes only after trainees can document on their own, and teach them to check AI notes for omissions, hallucinations and bias before signing.",
+       pol:["shc-dax","furm","chen-notes","ab1979"],
+       polNote:"Stanford-authored guidance: introduce scribes only after trainees can document on their own. From 2027, AB 1979 bars AI from independently performing licensed clinical functions; documentation without professional judgment is excluded.",
        own:["You (the signer)","SHC (chose and vetted the tool)"], ownNote:"SHC vets new AI tools with FURM before adoption. The signature still puts the note and orders on you.", status:"partial", crumple:true},
       {id:"C8", t:"Forwarding AI output as your answer to a colleague’s curbside question",
        ex:"A colleague asks about a drug interaction, and you paste the chatbot’s reply.",
@@ -926,7 +946,7 @@ const LENSES = [
      chains:[
       {id:"A1", t:"A meeting transcript that names people goes into AI",
        ex:"Downloading a committee transcript that discussed a learner’s remediation and asking for minutes.",
-       ev:"For SoM users, Zoom and M365 connectors are disabled at every risk level. A transcript’s risk tier depends on what was said. Evidence of time saved is self-report only.",
+       ev:"For SoM users, UIT disables the Zoom and M365 connectors in Claude, and the Zoom plugin in ChatGPT Edu, at every risk level. A transcript’s risk tier depends on what was said. Evidence of time saved is self-report only.",
        evb:"req", cites:[],
        bear:{others:"People discussed in the meeting", inst:"Data-tier breach"},
        when:"immediate", whenNote:"Disclosure at upload.",
@@ -954,12 +974,12 @@ const LENSES = [
      chains:[
       {id:"A3", t:"An inbound email carries hidden instructions to a mailbox agent",
        ex:"A copilot that reads your inbox follows a line hidden in a vendor email.",
-       ev:"EchoLeak: one crafted email could trigger zero-click data exfiltration from Microsoft 365 Copilot (a disclosed exploit; Microsoft patched it, and no in-the-wild use was reported). For SoM, the M365 connector is disabled, which closes this path for UIT tools. Whether SoM users have Microsoft’s own Copilot was not checked.",
+       ev:"EchoLeak: one crafted email could trigger zero-click data exfiltration from Microsoft 365 Copilot (a disclosed exploit; Microsoft patched it, and no in-the-wild use was reported). For SoM, UIT disables the M365 connector in Claude; ChatGPT Edu and Gemini Enterprise list Outlook connectors. Whether SoM users have Microsoft’s own Copilot was not checked.",
        evb:"ev", cites:["echoleak"],
        bear:{inst:"Data exfiltration", self:"Your mailbox is the entry point"},
        when:"immediate", whenNote:"Zero-click: no action needed from you.",
        pol:["uit-connectors","uit-agentic"],
-       own:["UIT Information Security Office"], ownNote:"This control works by removing the capability.", status:"clear"},
+       own:["UIT Information Security Office"], ownNote:"UIT decides which connectors each tool may use. In Claude, the control works by removing the capability.", status:"clear"},
       {id:"A4", t:"An official communication is drafted by AI in Stanford’s voice",
        ex:"A department newsletter or announcement written with a chatbot.",
        ev:"University Communications publishes AI guidelines for official communications. Their contents were not reviewed for this page. By late 2024, an estimated 24% of corporate press releases and 14% of UN press releases involved LLM-assisted writing.",
@@ -1023,7 +1043,7 @@ const LENSES = [
        pol:["uit-tiers"], own:["UIT Information Security Office"], status:"clear"},
       {id:"D6", t:"Trying a new AI app on real work material",
        ex:"Testing the DeepSeek app by pasting in a non-public committee report to compare it with ChatGPT.",
-       ev:"UIT bars DeepSeek-hosted models for Stanford business outside the AI Playground, whatever the data. Tools without a Stanford agreement may hold only Low-risk data, on personal or Stanford accounts, and non-public reports are Moderate Risk.",
+       ev:"UIT’s AI Playground FAQ asks people to refrain from DeepSeek-hosted models for Stanford business outside the Playground: there is no enforceable contract with DeepSeek. Tools without a Stanford agreement may hold only Low-risk data, on personal or Stanford accounts, and non-public reports are Moderate Risk.",
        evb:"req", cites:[],
        bear:{inst:"Stanford data outside its agreements", others:"People named in the report"},
        when:"immediate", whenNote:"The data leaves when you paste.",
@@ -1084,8 +1104,8 @@ const LENSES = [
        pol:["accme"], own:["ACCME (through the CME provider)"], status:"partial"},
       {id:"D9", t:"AI-generated illustrations from a talk are reused in a paper",
        ex:"Anatomy illustrations made with an image generator for grand rounds later go into a review article’s figures.",
-       ev:"Nature generally does not permit AI-generated images, Science requires editors’ explicit permission, and JAMA’s 2026 update reportedly bars AI-generated clinical images and illustrations outside disclosed research methods. NEJM retracted an AI-altered clinical image in April 2026. The Copyright Office protects AI output only where a human determined the expressive elements.",
-       evb:"req", cites:[],
+       ev:"Nature generally does not permit AI-generated images, and Science requires editors’ explicit permission. JAMA does not permit clinical images or illustrations created or manipulated by AI unless they are part of a fully disclosed research design. On April 29, 2026, NEJM retracted a case report at the authors’ request: they had used an AI tool to move a ruler in the image. The Copyright Office protects AI output only where a human determined the expressive elements.",
+       evb:"req", cites:["flanagin","nejmretract"],
        bear:{self:"Retraction or rejected figures", others:"Readers, if an image misleads"},
        when:"delayed", whenNote:"Surfaces at submission or after publication.",
        pol:["nature","science","jama","copyright2"], polNote:"Journal rules bind at submission. Talks have no rule.",
@@ -1111,7 +1131,7 @@ const LENSES = [
        pol:["uit-tiers","scales-ai"], polNote:"Student records are Moderate Risk; no rule covers AI grading itself. Stanford-authored guidance (SCALES-AI): AI feedback from a basic prompt needs faculty review before it reaches the learner.", own:["UIT Information Security Office (data tier only)"], status:"partial"},
       {id:"T2", t:"Student work is run through an AI detector without notice",
        ex:"Pasting a suspicious assignment into a detector and opening a case on the score.",
-       ev:"Stanford’s BCA guidance: give advance notice before using AI-detection software. The Academic Integrity Working Group found detectors unreliable and biased and not fit as evidence in misconduct cases. One detector flagged grammar-only edits as AI-written (2023 models). Human reviewers also wrongly flagged 14% of real abstracts (December 2022 ChatGPT), though that study’s detector performed well.",
+       ev:"Office of Community Standards guidance for the BCA: give students advance notice before using AI-detection software. The Academic Integrity Working Group found detectors unreliable and biased and not fit as evidence in misconduct cases. One detector flagged grammar-only edits as AI-written (2023 models). Human reviewers also wrongly flagged 14% of real abstracts (December 2022 ChatGPT), though that study’s detector performed well.",
        evb:"ev", cites:["chemaya","gao"],
        bear:{others:"Students who are falsely flagged", self:"A case that will not hold"},
        when:"immediate", whenNote:"The accusation happens at once.",
@@ -1119,7 +1139,7 @@ const LENSES = [
        own:["Board on Conduct Affairs / Office of Community Standards"], status:"clear"},
       {id:"T8", t:"Unreleased exam items go into AI for editing",
        ex:"Pasting next week’s final exam into a chatbot to check items for ambiguous wording.",
-       ev:"No rule was found on writing or editing exam items with AI, and UIT’s risk classification does not name unreleased exam items. Stanford-agreement tools cover every non-PHI tier; tools without one may hold only Low-risk data.",
+       ev:"No rule was found on writing or editing exam items with AI, and UIT’s risk classification does not name unreleased exam items. Approved tools differ by tier, so check the tool’s row in UIT’s matrix; tools without a Stanford agreement may hold only Low-risk data.",
        evb:"pd", cites:[],
        bear:{others:"Learners, if items leak", inst:"Exam security"},
        when:"delayed", whenNote:"Surfaces if items circulate before the exam.",
@@ -1794,12 +1814,13 @@ function fitLists(){
 /* ?tour opens a presenter route: one stop per item, in the order given, e.g.
    ?tour=@cube,@in,clin,C2,C9,C7,clin,@cube
    Items are the cube (@cube), role cards (clin, res, adm, pd, tch), case ids (C2, R4, …) and four slides:
-   @in (Stanford's data risk tiers), @cx (the series' enterprise tools), @out (where output goes) and @map (status by question).
+   @agree (the Stanford AI Tools User Agreement, mapped onto the talk), @in (Stanford's data risk tiers), @tools (which of the series' tools can hold that data), @cx (the two permissions),
+   @out (where output goes) and @map (status by question).
    ?tour on its own uses TOUR_DEFAULT. Arrows step through each case's five steps, then move on;
    N and P jump a whole stop. A hash picks the starting stop: #5 (fifth stop) or #R4. */
-const TOUR_DEFAULT = "@cube,@in,@cx,@out,@map,clin,C2,C9,C7,clin,res,R3,R4,R7,res,adm,A1,A8,A5,adm,pd,D1,D3,D9,pd,tch,T2,T3,T5,tch,@cube";
+const TOUR_DEFAULT = "@cube,@agree,@in,@tools,@cx,@out,@map,clin,C2,C9,C7,clin,res,R3,R4,R7,res,adm,A1,A8,A5,adm,pd,D1,D3,D9,pd,tch,T2,T3,T5,tch,@cube";
 const TOUR_Q = {in:"What data is this?", cx:"Whose work is it?", out:"Who is accountable for the output?"};
-const TOUR_CARDS = ["@in","@cx","@out","@map"];
+const TOUR_CARDS = ["@agree","@in","@tools","@cx","@out","@map"];
 const isRole = s => LENSES.some(L=>L.id===s);
 (function(){
   const raw = new URLSearchParams(location.search).get("tour");
@@ -1824,15 +1845,28 @@ const RISK_TIERS = [
   {k:"mod", name:"Moderate Risk", items:["Unpublished research data (at data owner's discretion)","Student records and admission applications","Faculty/staff employment applications, personnel files, benefits, salary, birth date, personal contact information","Non-public Stanford policies and policy manuals","Non-public contracts","Stanford internal memos and email, non-public reports, budgets, plans, financial info","University and employee ID numbers","Project/Task/Award (PTA) numbers","Engineering, design, and operational information regarding Stanford infrastructure"]},
   {k:"high", name:"High Risk", items:["Health Information, including Protected Health Information (PHI)","Health Insurance policy ID numbers","Social Security Numbers","Credit card numbers","Financial account numbers","Export controlled information","Driver's license numbers","Passport and visa numbers","Donor contact information and non-public gift information"]}
 ];
-/* The series' three enterprise tools: UIT service pages and rates pages (rates last modified Oct 13, 2026). */
+/* The series' three enterprise tools: UIT service pages, rates pages (Oct 13, 2026) and the October 19, 2026 platform update. */
+const UIT_OCT = "https://uit.stanford.edu/news/stanford-ai-tools-october-2026-platform-updates";
 const SERIES_TOOLS = [
-  {t:"chatgpt", phi:true, aff:"$15 a month", req:"Standard for Affiliates tier, with a SUNet ID and a PTA", rates:"https://uit.stanford.edu/rates/openai-chatgpt-edu"},
-  {t:"claude", phi:false, aff:"$15 a month", req:"Standard for Affiliates tier, with a SUNet ID and a PTA", rates:"https://uit.stanford.edu/rates/claude"},
-  {t:"gemini", phi:true, aff:"Available; see UIT rates", req:"Standard for Affiliates tier (rates page needs a Stanford sign-in)", rates:"https://uit.stanford.edu/rates/gemini-enterprise-ai"}
+  {t:"chatgpt", phi:true, access:"Request form", rates:"https://uit.stanford.edu/rates/openai-chatgpt-edu"},
+  {t:"claude", phi:false, access:"Request form", rates:"https://uit.stanford.edu/rates/claude"},
+  {t:"gemini", phi:true, access:"Activates when you sign in", rates:"https://uit.stanford.edu/rates/gemini-enterprise-ai"}
+];
+/* Stanford AI Tools User Agreement, as shown at ChatGPT Edu sign-in (text supplied by Vishal, Oct 25, 2026).
+   Each standard is mapped to the part of the talk that covers it. */
+const AGREEMENT = [
+  {k:"Policy Compliance", txt:"I will ensure my use of AI tools complies with existing Stanford policies regarding data protection, privacy, and acceptable use (including FERPA, HIPAA, Controlled Unclassified Information, and other regulatory frameworks).",
+   maps:[["in","The risk tiers and the laws behind them"],[null,"The Limitations column on every card"]]},
+  {k:"Data Guardrails", txt:"I will only input or share Stanford sensitive or restricted data into Stanford approved AI tools that have been explicitly approved for that specific data classification. I will not input or share sensitive or restricted data without explicit authorization from the data owner and the appropriate security protections in place.",
+   maps:[["in","Which tool can hold this data"],["cx","Permission 1: the tool and the account"]]},
+  {k:"Oversight", txt:"Recognizing that AI-generated content can be incomplete or inaccurate, I retain full responsibility for my work and decisions. I will review and verify all AI outputs before relying on them or incorporating them into university activities.",
+   maps:[["out","Who is accountable for the output"]]},
+  {k:"Incident Reporting", txt:"I will promptly report any suspected data exposure or security anomalies involving AI tools to the University Privacy Office and Information Security Office.",
+   maps:[["in","If restricted data already went in"],[null,"Close: who to ask"]]}
 ];
 /* Where output goes in this series, and the rules that govern each place (all on this page's registry). */
 const OUT_PLACES = [
-  {n:"Slack", what:"Messages and channel posts", rules:[["uit-connectors","UIT-approved connector for SoM"],["uit-tiers","the data's risk tier still applies"]]},
+  {n:"Slack", what:"Messages and channel posts", rules:[["uit-connectors","UIT-approved connector"],["uit-tiers","the data's risk tier still applies"]]},
   {n:"Google Docs", what:"Drafts, minutes and shared documents", rules:[["uit-connectors","UIT-approved connectors for Drive, Docs and Sheets"],["ucomm","University Communications AI guidelines for official communications"]]},
   {n:"Publications", what:"Manuscripts, figures and references", rules:[["icmje","ICMJE recommendations"],["jama","JAMA"],["nejm","NEJM"],["nature","Nature"],["science","Science"],["copyright2","Copyright Office on AI output"]]},
   {n:"Grants", what:"Applications and peer review", rules:[["nih-orig","NIH NOT-OD-25-132: originality and application cap"],["nih-review","NIH NOT-OD-23-149: no generative AI in peer review"],["nsf","NSF merit review notice"]]}
@@ -1847,29 +1881,58 @@ function tourCardHTML(it){
       <tbody>${DIMS.map(d=>{ const cs = colChains(d.k); return `<tr><th><span class="tc-dim" style="color:${d.color}">${ic(DIMICON[d.k])}${d.name}</span><span class="tc-sub">${TOUR_Q[d.k]}</span></th>${ST3.map(k=>`<td class="st-${k}">${cs.filter(c=>c.status===k).length}</td>`).join("")}</tr>`; }).join("")}</tbody></table></div>
       <p class="tc-note">${total} cases across ${LENSES.length} roles.</p></div>`;
   }
+  if(it==="@agree"){
+    const tag = ([k, label]) => { const d = k && DIMS.find(x=>x.k===k);
+      return `<li class="amap" style="--ac:${d ? d.color : "var(--muted)"}">${d ? `<b>${ic(DIMICON[k])}${d.name}</b>` : ""}${esc(label)}</li>`; };
+    return `<div class="tc wide"><div class="tc-dim big" style="color:var(--cardinal)">${ic("shield")}Before we start</div>
+      <h2 class="tc-q">The agreement you accept at sign-in</h2>
+      <p class="tc-gov">Stanford AI Tools User Agreement, shown when you sign in to ChatGPT Edu. Each standard maps to part of this talk.</p>
+      <div class="tc-scroll"><table class="tc-table agree"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Standard</th><th>What you agree to</th><th>Where it shows up today</th></tr></thead>
+      <tbody>${AGREEMENT.map(a=>`<tr><th>${esc(a.k)}</th><td class="atxt">${esc(a.txt)}</td><td><ul class="amaps">${a.maps.map(tag).join("")}</ul></td></tr>`).join("")}</tbody></table></div>
+      <p class="tc-src">The agreement doesn’t mention licensed content. That’s the second permission, under Context.</p></div>`;
+  }
   if(it==="@in"){
     return `<div class="tc wide">${dimHead("in")}<h2 class="tc-q">${TOUR_Q.in}</h2>
       <p class="tc-gov">Stanford sorts data into three risk tiers, and UIT approves each AI tool for specific tiers.</p>
       <div class="tiers">${RISK_TIERS.map(r=>`<section class="tier ${r.k}"><h3>${r.name}</h3><ul>${r.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`).join("")}</div>
-      <p class="tc-alert"><b>No AI tool is approved</b> for payment card data, Controlled Unclassified Information or export-controlled information, including tools approved for High Risk data. <span class="tc-srci">Source: ${extLink(RISK_URL, "UIT, Risk Classifications")}</span></p></div>`;
+      <p class="tc-alert"><b>No AI tool is approved</b> for payment card data, Controlled Unclassified Information or export-controlled information, including tools approved for High Risk data. Already entered it? Stop using the tool with that data and report it to the Information Security Office right away. <span class="tc-srci">Source: ${extLink(RISK_URL, "UIT, Risk Classifications")}</span></p></div>`;
+  }
+  if(it==="@tools"){
+    const yes = `<span class="yes" aria-label="Approved">✓</span>`;
+    return `<div class="tc wide">${dimHead("in")}<h2 class="tc-q">Which tool can hold this data?</h2>
+      <div class="tc-scroll"><table class="tc-table"><thead><tr><th>The series’ three tools</th><th class="c">Low</th><th class="c">Moderate</th><th class="c">High</th><th class="c">PHI</th><th>Getting access</th></tr></thead>
+      <tbody>${SERIES_TOOLS.map(x=>`<tr><th>${extLink(TOOL[x.t].u, esc(TOOL[x.t].n))}</th><td class="c">${yes}</td><td class="c">${yes}</td><td class="c">${yes}</td>
+        <td class="c">${x.phi ? `${yes}<small>university approval</small>` : `<span class="no">No</span><small>only through the AI API Gateway</small>`}</td>
+        <td>${extLink(TOOL[x.t].u, x.access)}</td></tr>`).join("")}</tbody></table></div>
+      <p class="tc-alert"><b>For anything from an SHC or LPCH chart, your clinical site’s policy comes first.</b> UIT approves these tools for PHI at the university level; confirm with Stanford Medicine TDS or SHC Privacy before relying on that approval.</p>
+      <div class="tc-notes">
+        <p>Other tools UIT approves for PHI include Secure GPT, Google Gemini Chat, Microsoft Copilot Chat, Gemini Notebook Enterprise and the AI API Gateway. Some approved tools stop at Moderate, so check the tool’s row in ${extLink(POL["uit-services"].u, "UIT’s matrix")}.</p>
+        <p>Personal Claude accounts tied to a stanford.edu email stop working January 1, 2027; ${extLink(UIT_OCT, "move them before December 31")}. UIT says inputs to all three tools aren’t used to train models.</p>
+        <p>The Standard tier is free for active faculty, staff, students, postdocs and some fellow affiliations. SHC and LPCH residents and clinical fellows pay as affiliates: ${extLink(SERIES_TOOLS[0].rates, "$15 a month")} for ChatGPT Edu or Claude, with a SUNet ID and a PTA.</p>
+        <p>Residents and fellows may already have Secure GPT and Microsoft Copilot through their SHC or LPCH login. A department finance admin may need to help with the PTA.</p>
+      </div></div>`;
   }
   if(it==="@cx"){
-    const yes = `<span class="yes" aria-label="Approved">✓</span>`;
-    return `<div class="tc wide">${dimHead("cx")}<h2 class="tc-q">The three tools this series focuses on</h2>
-      <div class="tc-scroll"><table class="tc-table"><thead><tr><th>Tool</th><th class="c">Low</th><th class="c">Moderate</th><th class="c">High</th><th class="c">PHI</th><th>Affiliates</th></tr></thead>
-      <tbody>${SERIES_TOOLS.map(x=>`<tr><th>${extLink(TOOL[x.t].u, esc(TOOL[x.t].n))}</th><td class="c">${yes}</td><td class="c">${yes}</td><td class="c">${yes}</td>
-        <td class="c">${x.phi ? yes : `<span class="no">No</span><small>PHI only through the AI API Gateway</small>`}</td>
-        <td>${extLink(x.rates, x.aff)}<small>${esc(x.req)}</small></td></tr>`).join("")}</tbody></table></div>
-      <ul class="tc-points"><li>All three are approved for Low, Moderate and High Risk data. Only ChatGPT Edu and Gemini Enterprise are approved for PHI today, in the UIT-managed workspaces you reach through Stanford single sign-on.</li>
-        <li>The Standard tier is free for active faculty, staff, students and postdocs. Visiting scholars, fellows and other affiliates outside that tier can buy a Standard for Affiliates seat.</li></ul>
-      <p class="tc-src">Sources: UIT service pages for ${SERIES_TOOLS.map(x=>extLink(TOOL[x.t].u, esc(TOOL[x.t].n))).join(", ")}; UIT rates pages.</p></div>`;
+    return `<div class="tc wide">${dimHead("cx")}<h2 class="tc-q">Two permissions have to line up</h2>
+      <p class="tc-gov">Before data or licensed content goes into an AI tool, both of these have to say yes.</p>
+      <div class="perms">
+        <section class="perm"><div class="perm-n">1</div><h3>The tool and the account</h3>
+          <p class="perm-q">Is this tool approved for this data, through the account I’m using?</p>
+          <p>UIT’s risk tiers and ${extLink(POL["uit-services"].u, "approved services")} decide this. For anything from an SHC or LPCH chart, your clinical site’s policy comes first.</p>
+          <p class="perm-ask">Ask: UIT Information Security Office; for chart data, Stanford Medicine TDS or SHC Privacy</p></section>
+        <section class="perm"><div class="perm-n">2</div><h3>The content’s license</h3>
+          <p class="perm-q">Does the license for this content allow this use?</p>
+          <p>${esc(POL.lane.n)}</p>
+          <p class="perm-ask">Ask: ${extLink(POL.lane.u, "Lane Library")}</p></section>
+      </div>
+      <p class="tc-src">An approved tool doesn’t settle the license on what you upload to it. Three of the four Context cases ahead turn on the license.</p></div>`;
   }
   if(it==="@out"){
     return `<div class="tc wide">${dimHead("out")}<h2 class="tc-q">${TOUR_Q.out}</h2>
       <p class="tc-gov">Where output goes in this series, and what governs it there.</p>
       <div class="tc-scroll"><table class="tc-table"><thead><tr><th>Where it goes</th><th>What comes out</th><th>What governs it</th></tr></thead>
       <tbody>${OUT_PLACES.map(p=>`<tr><th>${esc(p.n)}</th><td>${esc(p.what)}</td><td>${p.rules.map(([id,l])=>polA(id,l)).join("; ")}</td></tr>`).join("")}</tbody></table></div>
-      <p class="tc-src">For SoM users, Zoom and M365 connectors are off. Claude has the most connectors approved, but is not approved for PHI. Source: ${extLink(POL["uit-connectors"].u, "UIT, Available Connectors for AI Services")}</p></div>`;
+      <p class="tc-src">For SoM users, UIT turns off the Zoom and Microsoft 365 connectors in Claude, and the Zoom plugin in ChatGPT Edu. Claude has the most connectors approved, but is not approved for PHI. Source: ${extLink(POL["uit-connectors"].u, "UIT, Available Connectors for AI Services")}</p></div>`;
   }
   return "";
 }
