@@ -206,6 +206,7 @@ body.at-root #world{opacity:0;pointer-events:none}
 .tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .tl li{font-size:var(--fs, 24px);line-height:1.22;padding:6px 12px;border-radius:10px;background:var(--surface2);border:1.5px solid var(--line)}
 .tl li span{color:var(--muted);font-size:.72em}
+.tl li span.pname{color:inherit;font-size:inherit}
 .tl.pol li{border-left:6px solid var(--cardinal)}
 .tl.pol li.guid{border-left-color:var(--poppy)}
 .chainsHead{position:absolute;left:1140px;top:200px;width:440px}
@@ -508,7 +509,7 @@ table.ov td.n{font-weight:700;text-align:center;font-variant-numeric:tabular-num
     <p><b>Navigating.</b> The arrow keys (or space) move from the cube to each role, then across its Data In, Context and Data Out cards, then back out to the role and to the cube, which turns to the next role. Click a case to open it; inside a case the arrows step through it and return to the card after the last step. Esc goes up one level.</p>
     <p><b>Reasoning</b> is not a separate dimension. Its risk depends on role and level: learners risk never building a skill; experienced clinicians are not protected from automation bias.</p>
     <p><b>Guidance by Stanford authors</b> is labelled as such in step 4. It is advice, not policy.</p>
-    <p><b>Links.</b> Policy names link to the issuing body's page; guidance links to the published article. Study citations link to the DOI or publisher page. Policies change; check the date on the linked page before you rely on it. Lane Guidance is not yet published, so it is not linked.</p>
+    <p><b>Links.</b> Policy names link to the issuing body's page; guidance links to the published article. Study citations link to the DOI or publisher page. Policies change; check the date on the linked page before you rely on it.</p>
   </div>
 </dialog>
 
@@ -561,7 +562,7 @@ const POL = {
  "authorship":{n:"Stanford Research Policy Handbook: Academic Authorship",o:"Dean of Research",u:"https://doresearch.stanford.edu/policies/research-policy-handbook/conduct-research/academic-authorship",k:"req"},
  "irb":{n:"Stanford IRB: Digital Health Technologies guidance",o:"Stanford IRB",u:"https://irb.stanford.edu/for-researchers/digital-health-technologies",k:"req"},
  "ucomm":{n:"AI guidelines for marketing and communications",o:"University Communications",u:"https://ucomm.stanford.edu/policies-and-guidance/ai-guidelines-marketing-and-communications",k:"guid"},
- "lane":{n:"Lane Guidance",o:"Lane Medical Library",u:"",k:"guid"},
+ "lane":{n:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",o:"Publishers",u:"",k:"req"},
  "fda-cds":{n:"FDA Clinical Decision Support Software guidance",o:"FDA CDRH",u:"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software",k:"guid"},
  "ab1979":{n:"California AB 1979: AI in health care services (from 2027-01-01)",o:"Medical Board of California",u:"https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1979",k:"req"},
  "ab3030":{n:"California AB 3030: GenAI notice in patient communications (Medical Board guidance)",o:"Medical Board of California / CDPH",u:"https://www.mbc.ca.gov/Resources/Medical-Resources/GenAI-Notification.aspx",k:"req"},
@@ -675,7 +676,7 @@ const LENSES = [
      chains:[
       {id:"C1", t:"Identifiable patient details go into a tool with no BAA",
        ex:"A dosing question to OpenEvidence or a personal ChatGPT account that carries age, dates and the case narrative.",
-       ev:"HIPAA treats this as an impermissible disclosure. The MD Handbook (the student policy) calls “anonymized, general inputs” in public tools appropriate, while Lane Guidance warns that removing name and MRN does not de-identify a narrative. No HHS OCR enforcement action naming an AI tool was found for 2025–26, which means none found, not none exists.",
+       ev:"HIPAA treats this as an impermissible disclosure. The MD Handbook (the student policy) calls “anonymized, general inputs” in public tools appropriate, but HIPAA’s Safe Harbor standard requires removing dates too, not just name and MRN. No HHS OCR enforcement action naming an AI tool was found for 2025–26, which means none found, not none exists.",
        evb:"req", cites:[],
        bear:{others:"The patient: loss of privacy", inst:"Impermissible disclosure; breach review", self:"Possible discipline"},
        when:"immediate", whenNote:"The disclosure happens when you paste. Discovery may come much later.",
@@ -712,12 +713,12 @@ const LENSES = [
        own:[], ownNote:"No owner for relying on these answers was found. SHC says the clinician makes the final decision, and from 2027 AB 1979 requires clinicians to keep independent judgment when decision support informs care.", status:"gap", crumple:true},
       {id:"C5", t:"Licensed CDS content pasted into an outside AI tool",
        ex:"Copying an UpToDate topic or a drug monograph into Claude to turn into a patient handout.",
-       ev:"Lane Guidance: pasting a CDS topic card, monograph or generated answer into an outside tool means “check first,” because some CDS license terms restrict the output as well as the input. The agreements themselves are confidential.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",
        evb:"pd", cites:[],
        bear:{inst:"License breach", others:"Colleagues, if access is suspended"},
        when:"delayed", whenNote:"Found in a publisher audit or complaint.",
-       pol:["lane"], polNote:"Lane Guidance is not yet published.",
-       own:["Lane Medical Library"], status:"partial"},
+       pol:["lane"],
+       own:["Lane Medical Library"], ownNote:"Each license is a separate contract, so terms differ by publisher.", status:"partial"},
       {id:"C9", t:"Trusting the AI answer inside a licensed reference because the reference is trusted",
        ex:"A clinician asks UpToDate Expert AI a dosing question and acts on the answer as if it were a reviewed topic.",
        ev:"The accuracy of AI features inside licensed references is largely unmeasured: one independent study of UpToDate Expert AI, none of Dyna AI. In that study, frontier LLMs outperformed UpToDate Expert AI and OpenEvidence (OpenEvidence has contested it). An OpenEvidence-co-designed preprint found the reverse. Outside medicine, legal research tools marketed as hallucination-free still hallucinated 17–33% of the time.",
@@ -725,7 +726,7 @@ const LENSES = [
        bear:{others:"The patient", self:"You relied on it; the decision stays yours"},
        when:"immediate", whenNote:"Acted on at the point of care.",
        pol:["lane","fda-cds","ab1979"],
-       polNote:"Using a platform’s own AI feature is covered by its license terms (Lane Guidance, Level 2). No rule covers relying on the answer.",
+       polNote:"Using a platform’s own AI feature is covered by its license terms. No rule covers relying on the answer.",
        own:[], ownNote:"No owner for relying on these answers was found.", status:"gap"}
      ]},
    out:{ q:"Who receives it (patient, chart, colleague), and whose signature is on it?",
@@ -800,20 +801,20 @@ const LENSES = [
      chains:[
       {id:"R4", t:"A review corpus or RAG index is built from licensed PDFs",
        ex:"Forty licensed PDFs uploaded one at a time into a project for a scoping review.",
-       ev:"Lane Guidance draws its line at Level 5: a corpus, batch, RAG index or scripted download means ask first. “Forty PDFs uploaded one at a time is still a corpus.” Six of nine major publishers reserve or restrict AI uses on their own pages.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases. Six of nine major publishers reserve or restrict AI uses on their own pages.",
        evb:"pd", cites:[],
        bear:{inst:"License breach", others:"Everyone who relies on that license"},
        when:"delayed", whenNote:"Found by publisher monitoring or audit.",
-       pol:["lane"], polNote:"Publisher license terms apply as well; the agreements are confidential.",
-       own:["Lane Medical Library","Publisher"], ownNote:"Lane Guidance is not yet published, and its one-item default is described as inferred rather than documented.", status:"partial"},
+       pol:["lane"],
+       own:["Lane Medical Library","Publisher"], ownNote:"Each license is a separate contract, so terms differ by publisher.", status:"partial"},
       {id:"R5", t:"An agent or script bulk-downloads through Lane access",
        ex:"A research agent is told to fetch every full text matching a search.",
-       ev:"Lane Guidance: scripted or bulk downloading of full text means “Ask first — and do not start.” Peer libraries warn that one breach can cut off access for the whole campus.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases. Peer libraries warn that one breach can cut off access for the whole campus.",
        evb:"pd", cites:[],
        bear:{others:"Every Stanford reader of that resource", inst:"Institution-wide IP block"},
        when:"immediate", whenNote:"An automated block can cut off the whole institution before Lane hears about it.",
        pol:["lane"], polNote:"Publisher licenses bar systematic downloading.",
-       own:["Lane Medical Library"], ownNote:"Clear rule; Lane Guidance is not yet published.", status:"partial"},
+       own:["Lane Medical Library"], ownNote:"Clear rule, but each license is a separate contract.", status:"partial"},
       {id:"R6", t:"Hidden instructions in an untrusted PDF take over an agent",
        ex:"An agent summarizing downloaded PDFs can also send email and read Drive. A hidden line tells it to forward files.",
        ev:"In a benchmark of synthetic agent tasks, GPT-4o carried out the attacker’s goal in 47.7% of cases; isolating tools cut that to 7.5%. On live web pages, about 70% of injections sit in HTML people never see, but in a test without tools, models followed them at most 8% of the time, and only 13 of 15,387 aimed at data theft (preprint).",
@@ -988,11 +989,11 @@ const LENSES = [
        pol:[], polNote:"No policy addresses this.", own:[], status:"gap"},
       {id:"D3", t:"A personal feed or index is built from licensed full text",
        ex:"Auto-saving every new licensed article in a field into a searchable AI project.",
-       ev:"Building a feed or index from licensed full text counts as a corpus (Level 5): ask Lane first.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",
        evb:"pd", cites:[],
        bear:{inst:"License breach"},
        when:"delayed", whenNote:"Found at audit.",
-       pol:["lane"], own:["Lane Medical Library"], ownNote:"Lane Guidance is not yet published.", status:"partial"},
+       pol:["lane"], own:["Lane Medical Library"], ownNote:"Each license is a separate contract, so terms differ by publisher.", status:"partial"},
       {id:"D8", t:"AI literature tools steer everyone to the same papers",
        ex:"A model suggests the key papers for a new topic, and you read and cite only those.",
        ev:"Asked to suggest references, LLMs favored highly cited papers more than human authors did. In a preprint, 11 models from 3 vendors concentrated their picks the same way (the top decile got 23.3–30.2% of selections vs 15.6% by chance); experts did not. Across 41.3 million papers, scientists using AI as a research method published more while the field’s range of topics shrank 4.63% (association).",
@@ -1071,25 +1072,25 @@ const LENSES = [
      chains:[
       {id:"T3", t:"Slides built from a licensed textbook chapter are shared beyond Stanford",
        ex:"A lecture built from an e-textbook chapter, later posted to a public conference site.",
-       ev:"Lane Guidance groups e-textbooks with study platforms, where terms are tighter: pasting a page into an outside AI tool means “check the platform,” and generating a deck or summary from platform content means “ask first.” Sharing slides or output with substantial licensed content beyond Stanford is Level 7: ask Lane first.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",
        evb:"pd", cites:[],
        bear:{inst:"License breach", self:"Takedown of your materials"},
        when:"delayed", whenNote:"Found once the slides are public.",
-       pol:["lane"], own:["Lane Medical Library"], ownNote:"Lane Guidance is not yet published.", status:"partial"},
+       pol:["lane"], own:["Lane Medical Library"], ownNote:"Each license is a separate contract, so terms differ by publisher.", status:"partial"},
       {id:"T4", t:"Exam items are generated from a licensed question bank",
        ex:"Asking a model to rewrite question-bank items into a new quiz.",
-       ev:"Reproducing question-bank items, including having a model rewrite them, is “precisely the use vendors watch for.” No other rule covers writing exam questions with AI.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases. No other rule covers writing exam questions with AI.",
        evb:"pd", cites:[],
        bear:{inst:"License breach", others:"Learners, if items leak"},
        when:"delayed", whenNote:"Found by vendor monitoring.",
        pol:["lane"], own:["Lane Medical Library"], status:"partial"},
       {id:"T9", t:"A course AI tutor is built on licensed readings",
        ex:"A custom GPT loaded with the course’s licensed articles and chapters, shared with the class as a study tutor.",
-       ev:"Lane Guidance: a defined set of licensed papers or a retrieval index is a corpus (Level 5), and building a tool on licensed content is Level 6; both mean ask Lane first. No redistribution and no substitute product are among the restrictions most agreements share.",
+       ev:"Publisher’s license terms – not software terms – govern downstream use. Check with Lane Library for specific use cases.",
        evb:"pd", cites:[],
        bear:{inst:"License breach", others:"Learners, if access is suspended"},
        when:"delayed", whenNote:"Found by publisher monitoring or audit.",
-       pol:["lane"], own:["Lane Medical Library"], ownNote:"Lane Guidance is not yet published.", status:"partial"}
+       pol:["lane"], own:["Lane Medical Library"], ownNote:"Each license is a separate contract, so terms differ by publisher.", status:"partial"}
      ]},
    out:{ q:"What do learners receive, and what does it do to their own reasoning?",
      tools:["tutors","projects","chatgpt","gemini","claude"],
@@ -1133,7 +1134,7 @@ const FOLLOW = new URLSearchParams(location.search).has("follow");
 const stage = document.getElementById("stage"), world = document.getElementById("world");
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const uniq = a => [...new Set(a)];
-const plink = id => POL[id].u ? `<a href="${esc(POL[id].u)}" target="_blank" rel="noopener">${esc(POL[id].n)}</a>` : `<span>${esc(POL[id].n)}</span>`;
+const plink = id => POL[id].u ? `<a href="${esc(POL[id].u)}" target="_blank" rel="noopener">${esc(POL[id].n)}</a>` : `<span class="pname">${esc(POL[id].n)}</span>`;
 const cites = ids => ids && ids.length ? `<span class="src">${ids.map(c=>`<a href="${esc(CITE[c][1])}" target="_blank" rel="noopener">${esc(CITE[c][0])}</a>`).join(" · ")}</span>` : "";
 
 LENSES.forEach(L => DIMS.forEach(d => {
